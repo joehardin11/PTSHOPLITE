@@ -13,35 +13,35 @@ Option Explicit On
 
 
 Namespace My
-    
-    <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0"),  _
-     Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+    <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0"),
+     Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
-        
-        Private Shared defaultInstance As MySettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New MySettings()),MySettings)
-        
+
+        Private Shared defaultInstance As MySettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New MySettings()), MySettings)
+
 #Region "My.Settings Auto-Save Functionality"
 #If _MyType = "WindowsForms" Then
-    Private Shared addedHandler As Boolean
+        Private Shared addedHandler As Boolean
 
-    Private Shared addedHandlerLockObject As New Object
+        Private Shared addedHandlerLockObject As New Object
 
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)> _
-    Private Shared Sub AutoSaveSettings(sender As Global.System.Object, e As Global.System.EventArgs)
-        If My.Application.SaveMySettingsOnExit Then
-            My.Settings.Save()
-        End If
-    End Sub
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>
+        Private Shared Sub AutoSaveSettings(sender As Global.System.Object, e As Global.System.EventArgs)
+            If My.Application.SaveMySettingsOnExit Then
+                My.Settings.Save()
+            End If
+        End Sub
 #End If
 #End Region
-        
+
         Public Shared ReadOnly Property [Default]() As MySettings
             Get
-                
+
 #If _MyType = "WindowsForms" Then
-               If Not addedHandler Then
+                If Not addedHandler Then
                     SyncLock addedHandlerLockObject
                         If Not addedHandler Then
                             AddHandler My.Application.Shutdown, AddressOf AutoSaveSettings
@@ -53,50 +53,1588 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\\pti-srv\e2app\Blswin32\Dat\POLYTEC"& _ 
-            "H\BLSDATA.MDB")>  _
-        Public ReadOnly Property E2Database() As String
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=PTI-SRV\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=True;Co" &
+            "nnect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=Rea" &
+            "dWrite;MultiSubnetFailover=False")>
+        Public Property PartDatabaseString() As String
             Get
-                Return CType(Me("E2Database"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=PTI-SRV\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=True")>  _
-        Public ReadOnly Property SHOPDB() As String
-            Get
-                Return CType(Me("SHOPDB"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property SQLPT() As Boolean
-            Get
-                Return CType(Me("SQLPT"),Boolean)
+                Return CType(Me("PartDatabaseString"), String)
             End Get
             Set
-                Me("SQLPT") = value
+                Me("PartDatabaseString") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\\pti-srv\e2app\Blswin32\Dat\POLYTEC" &
+            "H\BLSDATA.MDB")>
+        Public Property E2Database() As String
+            Get
+                Return CType(Me("E2Database"), String)
+            End Get
+            Set
+                Me("E2Database") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("V:\Quality")>
+        Public Property QCFolder() As String
+            Get
+                Return CType(Me("QCFolder"), String)
+            End Get
+            Set
+                Me("QCFolder") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("V:\Engineering\FINAL PRINTS")>
+        Public Property DCFolder() As String
+            Get
+                Return CType(Me("DCFolder"), String)
+            End Get
+            Set
+                Me("DCFolder") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("V:\Engineering\SETUP")>
+        Public Property SetupFolder() As String
+            Get
+                Return CType(Me("SetupFolder"), String)
+            End Get
+            Set
+                Me("SetupFolder") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("L:\")>
+        Public Property DefaultProgramLocation() As String
+            Get
+                Return CType(Me("DefaultProgramLocation"), String)
+            End Get
+            Set
+                Me("DefaultProgramLocation") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>
+        Public Property E2Parts() As Boolean
+            Get
+                Return CType(Me("E2Parts"), Boolean)
+            End Get
+            Set
+                Me("E2Parts") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("SELECT PartNo, (PartNo + '-' + Descrip) As DisplayMember From Estim ORDER BY Part" &
+            "No ASC")>
+        Public Property GetPartQuery() As String
+            Get
+                Return CType(Me("GetPartQuery"), String)
+            End Get
+            Set
+                Me("GetPartQuery") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>
+        Public Property E2Document() As Boolean
+            Get
+                Return CType(Me("E2Document"), Boolean)
+            End Get
+            Set
+                Me("E2Document") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>
+        Public Property SQLPT() As Boolean
+            Get
+                Return CType(Me("SQLPT"), Boolean)
+            End Get
+            Set
+                Me("SQLPT") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("C:\Users\Public\Documents\PTSHOP\")>
+        Public Property TempFileFolder() As String
+            Get
+                Return CType(Me("TempFileFolder"), String)
+            End Get
+            Set
+                Me("TempFileFolder") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>
+        Public Property InventoryOLE() As Boolean
+            Get
+                Return CType(Me("InventoryOLE"), Boolean)
+            End Get
+            Set
+                Me("InventoryOLE") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("599999")>
+        Public Property MinMetNumber() As Integer
+            Get
+                Return CType(Me("MinMetNumber"), Integer)
+            End Get
+            Set
+                Me("MinMetNumber") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("699999")>
+        Public Property MaxMetNumber() As Integer
+            Get
+                Return CType(Me("MaxMetNumber"), Integer)
+            End Get
+            Set
+                Me("MaxMetNumber") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("499999")>
+        Public Property MinMatNumber() As Integer
+            Get
+                Return CType(Me("MinMatNumber"), Integer)
+            End Get
+            Set
+                Me("MinMatNumber") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("599999")>
+        Public Property MaxMatNumber() As Integer
+            Get
+                Return CType(Me("MaxMatNumber"), Integer)
+            End Get
+            Set
+                Me("MaxMatNumber") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("699999")>
+        Public Property MinHardNumber() As Integer
+            Get
+                Return CType(Me("MinHardNumber"), Integer)
+            End Get
+            Set
+                Me("MinHardNumber") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("799999")>
+        Public Property MaxHardNumber() As Integer
+            Get
+                Return CType(Me("MaxHardNumber"), Integer)
+            End Get
+            Set
+                Me("MaxHardNumber") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("99999")>
+        Public Property MinPartNumber() As Integer
+            Get
+                Return CType(Me("MinPartNumber"), Integer)
+            End Get
+            Set
+                Me("MinPartNumber") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("499999")>
+        Public Property MaxPartNumber() As Integer
+            Get
+                Return CType(Me("MaxPartNumber"), Integer)
+            End Get
+            Set
+                Me("MaxPartNumber") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>
+        Public Property ToolStartRow() As Integer
+            Get
+                Return CType(Me("ToolStartRow"), Integer)
+            End Get
+            Set
+                Me("ToolStartRow") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property MasterCamDBLocation() As String
+            Get
+                Return CType(Me("MasterCamDBLocation"), String)
+            End Get
+            Set
+                Me("MasterCamDBLocation") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property MasterCamLathe() As String
+            Get
+                Return CType(Me("MasterCamLathe"), String)
+            End Get
+            Set
+                Me("MasterCamLathe") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("DYMO LabelWriter TwinTurbo")>
+        Public Property DYMOPrinter() As String
+            Get
+                Return CType(Me("DYMOPrinter"), String)
+            End Get
+            Set
+                Me("DYMOPrinter") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("<?xml version=""1.0"" encoding=""utf-16""?>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<ArrayOfString xmlns:xsi=""http://www.w3." &
+            "org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <s" &
+            "tring>Milling</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Turning</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Post-Processing</s" &
+            "tring>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Sawing</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>All</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</ArrayOfString>")>
+        Public Property Machinetypes() As Global.System.Collections.Specialized.StringCollection
+            Get
+                Return CType(Me("Machinetypes"), Global.System.Collections.Specialized.StringCollection)
+            End Get
+            Set
+                Me("Machinetypes") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property LocalFileHolder() As String
+            Get
+                Return CType(Me("LocalFileHolder"), String)
+            End Get
+            Set
+                Me("LocalFileHolder") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("<?xml version=""1.0"" encoding=""utf-16""?>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<ArrayOfString xmlns:xsi=""http://www.w3." &
+            "org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <s" &
+            "tring>Doosan 1</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Doosan 2</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Doosan 3</string" &
+            ">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Doosan 4</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Doosan 2600SY</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Doos" &
+            "an GT2100-1</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Doosan GT2100-2</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Doosan 240</" &
+            "string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Mori-Seiki SL30</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Omni-Turn</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <st" &
+            "ring>Doosan HP4000-1</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Doosan HP4000-2</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Mak" &
+            "ino A55</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Kitamura 4XT</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <string>Haas VF2-TR</string" &
+            ">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</ArrayOfString>")>
+        Public Property Machines() As Global.System.Collections.Specialized.StringCollection
+            Get
+                Return CType(Me("Machines"), Global.System.Collections.Specialized.StringCollection)
+            End Get
+            Set
+                Me("Machines") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>
+        Public Property Tablet() As Boolean
+            Get
+                Return CType(Me("Tablet"), Boolean)
+            End Get
+            Set
+                Me("Tablet") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("50")>
+        Public Property ScheduleRowHeight() As Decimal
+            Get
+                Return CType(Me("ScheduleRowHeight"), Decimal)
+            End Get
+            Set
+                Me("ScheduleRowHeight") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("450")>
+        Public Property Scheduleunassignedwidth() As Decimal
+            Get
+                Return CType(Me("Scheduleunassignedwidth"), Decimal)
+            End Get
+            Set
+                Me("Scheduleunassignedwidth") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("224, 224, 224")>
+        Public Property ScheduleBackColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("ScheduleBackColor"), Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("ScheduleBackColor") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("175")>
+        Public Property jobplannermachinewidth() As Decimal
+            Get
+                Return CType(Me("jobplannermachinewidth"), Decimal)
+            End Get
+            Set
+                Me("jobplannermachinewidth") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("25")>
+        Public Property jobplannermachineheight() As Decimal
+            Get
+                Return CType(Me("jobplannermachineheight"), Decimal)
+            End Get
+            Set
+                Me("jobplannermachineheight") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("20")>
+        Public Property jobplanneritemheight() As Decimal
+            Get
+                Return CType(Me("jobplanneritemheight"), Decimal)
+            End Get
+            Set
+                Me("jobplanneritemheight") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("PaleGreen")>
+        Public Property jobplanneritemgoodcolor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("jobplanneritemgoodcolor"), Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("jobplanneritemgoodcolor") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Segoe UI, 6pt")>
+        Public Property jobplanneritemfont() As Global.System.Drawing.Font
+            Get
+                Return CType(Me("jobplanneritemfont"), Global.System.Drawing.Font)
+            End Get
+            Set
+                Me("jobplanneritemfont") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("LightCoral")>
+        Public Property jobplanneritembadcolor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("jobplanneritembadcolor"), Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("jobplanneritembadcolor") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("16")>
+        Public Property Dayworkhours() As Integer
+            Get
+                Return CType(Me("Dayworkhours"), Integer)
+            End Get
+            Set
+                Me("Dayworkhours") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Select OrderDet.JobNo, OrderRouting.StepNo, OrderRouting.PartNo, OrderDet.PartDes" &
+            "c, OrderRouting.OperCode, OrderDet.DueDate, OrderRouting.TotHrsLeft, OrderRoutin" &
+            "g.EstimStartDate, OrderRouting.EstimEndDate, OpScheduling.CurrentMachine, OrderS" &
+            "cheduling.Material, OpScheduling.Programming, OpScheduling.Tooling, OpScheduling" &
+            ".Completed FROM (((OrderRouting INNER JOIN OrderDet ON OrderRouting.JobNo = Orde" &
+            "rDet.JobNo) LEFT JOIN OrderScheduling ON OrderRouting.JobNo = OrderScheduling.Jo" &
+            "bNo) LEFT JOIN OpScheduling ON (OrderRouting.JobNo = OpScheduling.JobNo AND Orde" &
+            "rRouting.StepNo = OpScheduling.StepNo)) WHERE OrderDet.Status = 'Open' AND (OpSc" &
+            "heduling.CurrentMachine IS NOT NULL AND OpScheduling.CurrentMachine <>'') ORDER " &
+            "BY OpScheduling.CurrentMachine ASC, OrderDet.DueDate ASC, OrderRouting.StepNo")>
+        Public Property Machineduedatestring() As String
+            Get
+                Return CType(Me("Machineduedatestring"), String)
+            End Get
+            Set
+                Me("Machineduedatestring") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("255, 128, 0")>
+        Public Property jobplannermaterialitemcolor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("jobplannermaterialitemcolor"), Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("jobplannermaterialitemcolor") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Select OrderDet.JobNo, OrderRouting.StepNo, OrderRouting.PartNo, OrderDet.PartDes" &
+            "c, OrderRouting.OperCode, OrderDet.DueDate, OrderRouting.TotHrsLeft, OpSchedulin" &
+            "g.EstimStartDate, OpScheduling.EstimEndDate, OpScheduling.CurrentMachine, OrderS" &
+            "cheduling.Material, OpScheduling.Programming, OpScheduling.Tooling, OpScheduling" &
+            ".Completed FROM (((OrderRouting INNER JOIN OrderDet ON OrderRouting.JobNo = Orde" &
+            "rDet.JobNo) LEFT JOIN OrderScheduling ON OrderRouting.JobNo = OrderScheduling.Jo" &
+            "bNo) LEFT JOIN OpScheduling ON (OrderRouting.JobNo = OpScheduling.JobNo AND Orde" &
+            "rRouting.StepNo = OpScheduling.StepNo)) WHERE OrderDet.Status = 'Open' AND (OpSc" &
+            "heduling.CurrentMachine IS NOT NULL AND OpScheduling.CurrentMachine <>'') ORDER " &
+            "BY OpScheduling.CurrentMachine ASC, OpScheduling.EstimStartDate ASC")>
+        Public Property Machinepriorityreport() As String
+            Get
+                Return CType(Me("Machinepriorityreport"), String)
+            End Get
+            Set
+                Me("Machinepriorityreport") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Select OrderDet.JobNo, OrderRouting.StepNo, OrderRouting.PartNo, OrderDet.PartDes" &
+            "c, OrderRouting.OperCode, OrderDet.DueDate, OrderRouting.TotHrsLeft, OrderRoutin" &
+            "g.EstimStartDate, OrderRouting.EstimEndDate, OpScheduling.CurrentMachine, OrderS" &
+            "cheduling.Material, OpScheduling.Programming, OpScheduling.Tooling, OpScheduling" &
+            ".Completed FROM (((OrderRouting INNER JOIN OrderDet ON OrderRouting.JobNo = Orde" &
+            "rDet.JobNo) LEFT JOIN OrderScheduling ON OrderRouting.JobNo = OrderScheduling.Jo" &
+            "bNo) LEFT JOIN OpScheduling ON (OrderRouting.JobNo = OpScheduling.JobNo AND Orde" &
+            "rRouting.StepNo = OpScheduling.StepNo)) WHERE OrderDet.Status = 'Open' AND (OpSc" &
+            "heduling.CurrentMachine IS NOT NULL AND OpScheduling.CurrentMachine <>'')ORDER B" &
+            "Y OrderRouting.OperCode ASC, OrderDet.DueDate ASC, OrderRouting.StepNo ASC")>
+        Public Property Opertypeduedatereport() As String
+            Get
+                Return CType(Me("Opertypeduedatereport"), String)
+            End Get
+            Set
+                Me("Opertypeduedatereport") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Select OrderDet.JobNo, OrderRouting.StepNo, OrderRouting.PartNo, OrderDet.PartDes" &
+            "c, OrderRouting.OperCode, OrderDet.DueDate, OrderRouting.TotHrsLeft, OpSchedulin" &
+            "g.EstimStartDate, OpScheduling.EstimEndDate, OpScheduling.CurrentMachine, OrderS" &
+            "cheduling.Material, OpScheduling.Programming, OpScheduling.Tooling, OpScheduling" &
+            ".Completed FROM (((OrderRouting INNER JOIN OrderDet ON OrderRouting.JobNo = Orde" &
+            "rDet.JobNo) LEFT JOIN OrderScheduling ON OrderRouting.JobNo = OrderScheduling.Jo" &
+            "bNo) LEFT JOIN OpScheduling ON (OrderRouting.JobNo = OpScheduling.JobNo AND Orde" &
+            "rRouting.StepNo = OpScheduling.StepNo)) WHERE OrderDet.Status = 'Open' AND (OpSc" &
+            "heduling.CurrentMachine IS NOT NULL AND OpScheduling.CurrentMachine <>'') AND Op" &
+            "Scheduling.Completed = False ORDER BY OrderRouting.OperCode ASC, OpScheduling.Es" &
+            "timStartDate ASC")>
+        Public Property OpertypePriorityReport() As String
+            Get
+                Return CType(Me("OpertypePriorityReport"), String)
+            End Get
+            Set
+                Me("OpertypePriorityReport") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\SHOPDB.mdf;Integrate" &
+            "d Security=True")>
+        Public ReadOnly Property SHOPDBConnectionString() As String
+            Get
+                Return CType(Me("SHOPDBConnectionString"), String)
+            End Get
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property TreeviewImageList() As String
+            Get
+                Return CType(Me("TreeviewImageList"), String)
+            End Get
+            Set
+                Me("TreeviewImageList") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property jobplannercalendarview() As String
+            Get
+                Return CType(Me("jobplannercalendarview"), String)
+            End Get
+            Set
+                Me("jobplannercalendarview") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property jobpannermachineview() As String
+            Get
+                Return CType(Me("jobpannermachineview"), String)
+            End Get
+            Set
+                Me("jobpannermachineview") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("<?xml version=""1.0"" encoding=""utf-16""?>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<ArrayOfString xmlns:xsi=""http://www.w3." &
+            "org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <s" &
+            "tring>MILL</string>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</ArrayOfString>")>
+        Public Property unassignedcodes() As Global.System.Collections.Specialized.StringCollection
+            Get
+                Return CType(Me("unassignedcodes"), Global.System.Collections.Specialized.StringCollection)
+            End Get
+            Set
+                Me("unassignedcodes") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=L:\MasterCam 2018\UPDATE STD TOOLS\POLYTECH STD TOOLS.tooldb")>
+        Public Property Tooldbstring() As String
+            Get
+                Return CType(Me("Tooldbstring"), String)
+            End Get
+            Set
+                Me("Tooldbstring") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=L:\MasterCam 2018\lathe\Tools\lathe_inch.tooldb")>
+        Public Property Lathetooldbstring() As String
+            Get
+                Return CType(Me("Lathetooldbstring"), String)
+            End Get
+            Set
+                Me("Lathetooldbstring") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("16")>
+        Public Property Workdayhours() As Integer
+            Get
+                Return CType(Me("Workdayhours"), Integer)
+            End Get
+            Set
+                Me("Workdayhours") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("C:\")>
+        Public Property lastfilelocation() As String
+            Get
+                Return CType(Me("lastfilelocation"), String)
+            End Get
+            Set
+                Me("lastfilelocation") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=PTI-SRV\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=True")>
+        Public ReadOnly Property SHOPDBConnectionString1() As String
+            Get
+                Return CType(Me("SHOPDBConnectionString1"), String)
+            End Get
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property allopspriorityreport() As String
+            Get
+                Return CType(Me("allopspriorityreport"), String)
+            End Get
+            Set
+                Me("allopspriorityreport") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property allopsduedatereport() As String
+            Get
+                Return CType(Me("allopsduedatereport"), String)
+            End Get
+            Set
+                Me("allopsduedatereport") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property customreport2() As String
+            Get
+                Return CType(Me("customreport2"), String)
+            End Get
+            Set
+                Me("customreport2") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property customreport3() As String
+            Get
+                Return CType(Me("customreport3"), String)
+            End Get
+            Set
+                Me("customreport3") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property customreport4() As String
+            Get
+                Return CType(Me("customreport4"), String)
+            End Get
+            Set
+                Me("customreport4") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property customreport5() As String
+            Get
+                Return CType(Me("customreport5"), String)
+            End Get
+            Set
+                Me("customreport5") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property customreport6() As String
+            Get
+                Return CType(Me("customreport6"), String)
+            End Get
+            Set
+                Me("customreport6") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property customreport7() As String
+            Get
+                Return CType(Me("customreport7"), String)
+            End Get
+            Set
+                Me("customreport7") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Custom Query 1")>
+        Public Property customreport1name() As String
+            Get
+                Return CType(Me("customreport1name"), String)
+            End Get
+            Set
+                Me("customreport1name") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Custom Query 2")>
+        Public Property customreport2name() As String
+            Get
+                Return CType(Me("customreport2name"), String)
+            End Get
+            Set
+                Me("customreport2name") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Custom Query 3")>
+        Public Property customreport3name() As String
+            Get
+                Return CType(Me("customreport3name"), String)
+            End Get
+            Set
+                Me("customreport3name") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Custom Query 4")>
+        Public Property customreport4name() As String
+            Get
+                Return CType(Me("customreport4name"), String)
+            End Get
+            Set
+                Me("customreport4name") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Custom Query 5")>
+        Public Property customreport5name() As String
+            Get
+                Return CType(Me("customreport5name"), String)
+            End Get
+            Set
+                Me("customreport5name") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Custom Query 6")>
+        Public Property customreport6name() As String
+            Get
+                Return CType(Me("customreport6name"), String)
+            End Get
+            Set
+                Me("customreport6name") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Custom Query 7")>
+        Public Property customreport7name() As String
+            Get
+                Return CType(Me("customreport7name"), String)
+            End Get
+            Set
+                Me("customreport7name") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property customreport1() As String
+            Get
+                Return CType(Me("customreport1"), String)
+            End Get
+            Set
+                Me("customreport1") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>
+        Public Property AutomaticallyopenCSV() As Boolean
+            Get
+                Return CType(Me("AutomaticallyopenCSV"), Boolean)
+            End Get
+            Set
+                Me("AutomaticallyopenCSV") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("SELECT TlAssemblyItem.ID, TlAssemblyItem.Name, TlAssemblyItem.Description, TlAsse" &
+            "mblyItem.Quantity, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "            tlToolMill.MCToolType, Tltoolmill.OverallLength" &
+            ", Tltoolmill.FluteCount, TlToolmill.NeckDiameter, TlToolmill.ArborDiameter, TlTo" &
+            "olMill.OverallDiameter, TlToolMill.CuttingDepth, TlManufacturer.Name as Manufact" &
+            "urer," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "            tlToolEndmill.TipDiameter, tltoolEndmill.CornerRadius, tltool" &
+            "Endmill.TaperAngle, tlMaterial.Name as Material, TlToolGrade.Name AS Grade, tlto" &
+            "olthreading.ThreadPitch  " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "            From TlAssemblyItem" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "            LEFT JOI" &
+            "N TlMaterial ON tlAssemblyitem.TlToolMaterialID = TlMaterial.ID" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "            INN" &
+            "ER JOIN TlToolmill ON tlAssemblyitem.ID = TlToolMill.ID" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "            LEFT JOIN T" &
+            "lManufacturer ON  TlAssemblyItem.TlManufacturerID = TlManufacturer.ID" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "         " &
+            "   LEFT JOIN TlToolEndmill On TlAssemblyitem.Id= TlToolEndmill.ID" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "            L" &
+            "EFT JOIN TlToolThreading On  TlAssemblyItem.ID =TlToolThreading.ID" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "            " &
+            "LEFT JOIN TlToolGrade On TlToolMill.TlGradeID = TlToolGrade.ID")>
+        Public Property milltoolstring() As String
+            Get
+                Return CType(Me("milltoolstring"), String)
+            End Get
+            Set
+                Me("milltoolstring") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("SELECT main.id, main.Name, main.description, , Insertitem.quantity, holderitem.na" &
+            "me as Holder, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "insertitem.name AS InsertName, TlHolderLathe.ShankWidth,  TlHold" &
+            "erlathe.ShankHeight, tlInsert.CornerRadius, insertitem.location" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM TlToollath" &
+            "e" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "LEFT JOIN tlassemblyitem as main" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ON tltoollathe.Id = main.ID" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "LEFT JOIN tlas" &
+            "semblyitem AS insertitem" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ON Tltoollathe.Insertid = insertitem.ID" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "LEFT JOIN tla" &
+            "ssemblyitem AS holderitem" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ON Tltoollathe.HolderID = holderitem.ID" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "LEFT JOIN Tl" &
+            "HolderLathe" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ON TlHolderlathe.ID = tltoollathe.HolderID" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "JOIN TlInsert" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ON TlIns" &
+            "ert.ID = tltoollathe.ID")>
+        Public Property lathetoolstring() As String
+            Get
+                Return CType(Me("lathetoolstring"), String)
+            End Get
+            Set
+                Me("lathetoolstring") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property LastUsername() As String
+            Get
+                Return CType(Me("LastUsername"), String)
+            End Get
+            Set
+                Me("LastUsername") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property LastPassword() As String
+            Get
+                Return CType(Me("LastPassword"), String)
+            End Get
+            Set
+                Me("LastPassword") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>
+        Public Property KeepPassword() As Boolean
+            Get
+                Return CType(Me("KeepPassword"), Boolean)
+            End Get
+            Set
+                Me("KeepPassword") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>
+        Public Property schprintopendbclick() As Boolean
+            Get
+                Return CType(Me("schprintopendbclick"), Boolean)
+            End Get
+            Set
+                Me("schprintopendbclick") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>
+        Public Property scheduledebugging() As Boolean
+            Get
+                Return CType(Me("scheduledebugging"), Boolean)
+            End Get
+            Set
+                Me("scheduledebugging") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Yellow")>
+        Public Property schedulehighlightcolor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("schedulehighlightcolor"), Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("schedulehighlightcolor") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("L:\PT SHOP\DYMO Labels\JobLabel2.label")>
+        Public Property DYMOJobLabel() As String
+            Get
+                Return CType(Me("DYMOJobLabel"), String)
+            End Get
+            Set
+                Me("DYMOJobLabel") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("L:\PT SHOP\DYMO Labels\MatLabel.label")>
+        Public Property DYMOMatLabel() As String
+            Get
+                Return CType(Me("DYMOMatLabel"), String)
+            End Get
+            Set
+                Me("DYMOMatLabel") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("L:\PT SHOP\DYMO Labels\PartLabel.label")>
+        Public Property DymoPartLabel() As String
+            Get
+                Return CType(Me("DymoPartLabel"), String)
+            End Get
+            Set
+                Me("DymoPartLabel") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("45")>
+        Public Property DymoPartLabeldescriplength() As Integer
+            Get
+                Return CType(Me("DymoPartLabeldescriplength"), Integer)
+            End Get
+            Set
+                Me("DymoPartLabeldescriplength") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("45")>
+        Public Property dymomatlabeldescriplength() As Integer
+            Get
+                Return CType(Me("dymomatlabeldescriplength"), Integer)
+            End Get
+            Set
+                Me("dymomatlabeldescriplength") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("45")>
+        Public Property dymojoblabelmaxlen() As Integer
+            Get
+                Return CType(Me("dymojoblabelmaxlen"), Integer)
+            End Get
+            Set
+                Me("dymojoblabelmaxlen") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("30 Days")>
+        Public Property QuoteTerms() As String
+            Get
+                Return CType(Me("QuoteTerms"), String)
+            End Get
+            Set
+                Me("QuoteTerms") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("4 weeks")>
+        Public Property LeadTime() As String
+            Get
+                Return CType(Me("LeadTime"), String)
+            End Get
+            Set
+                Me("LeadTime") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("<?xml version=""1.0"" encoding=""utf-16""?>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<ArrayOfString xmlns:xsi=""http://www.w3." &
+            "org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <s" &
+            "tring />" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</ArrayOfString>")>
+        Public Property RecentQuotes() As Global.System.Collections.Specialized.StringCollection
+            Get
+                Return CType(Me("RecentQuotes"), Global.System.Collections.Specialized.StringCollection)
+            End Get
+            Set
+                Me("RecentQuotes") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property Quotefilelocation() As String
+            Get
+                Return CType(Me("Quotefilelocation"), String)
+            End Get
+            Set
+                Me("Quotefilelocation") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property orderplannercalendarview() As String
+            Get
+                Return CType(Me("orderplannercalendarview"), String)
+            End Get
+            Set
+                Me("orderplannercalendarview") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>
+        Public Property ScheduleShowVendor() As Boolean
+            Get
+                Return CType(Me("ScheduleShowVendor"), Boolean)
+            End Get
+            Set
+                Me("ScheduleShowVendor") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("147")>
+        Public Property machineviewerheight() As Integer
+            Get
+                Return CType(Me("machineviewerheight"), Integer)
+            End Get
+            Set
+                Me("machineviewerheight") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("404")>
+        Public Property machineviewerwidth() As Integer
+            Get
+                Return CType(Me("machineviewerwidth"), Integer)
+            End Get
+            Set
+                Me("machineviewerwidth") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Segoe UI, 9.75pt")>
+        Public Property machineviewerfont() As Global.System.Drawing.Font
+            Get
+                Return CType(Me("machineviewerfont"), Global.System.Drawing.Font)
+            End Get
+            Set
+                Me("machineviewerfont") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property machineviewerlast() As String
+            Get
+                Return CType(Me("machineviewerlast"), String)
+            End Get
+            Set
+                Me("machineviewerlast") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property importholderfile() As String
+            Get
+                Return CType(Me("importholderfile"), String)
+            End Get
+            Set
+                Me("importholderfile") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property importtoolfile() As String
+            Get
+                Return CType(Me("importtoolfile"), String)
+            End Get
+            Set
+                Me("importtoolfile") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("445")>
+        Public Property setupsplitterdistance() As Integer
+            Get
+                Return CType(Me("setupsplitterdistance"), Integer)
+            End Get
+            Set
+                Me("setupsplitterdistance") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>
+        Public Property DueDateWarnings() As Boolean
+            Get
+                Return CType(Me("DueDateWarnings"), Boolean)
+            End Get
+            Set
+                Me("DueDateWarnings") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>
+        Public Property MaterialWarnings() As Boolean
+            Get
+                Return CType(Me("MaterialWarnings"), Boolean)
+            End Get
+            Set
+                Me("MaterialWarnings") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("L:\PT SHOP\DYMO Labels\ToolLabel.label")>
+        Public Property toollabel() As String
+            Get
+                Return CType(Me("toollabel"), String)
+            End Get
+            Set
+                Me("toollabel") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>
+        Public Property toolstockupdate() As Date
+            Get
+                Return CType(Me("toolstockupdate"), Date)
+            End Get
+            Set
+                Me("toolstockupdate") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property toolstockfile() As String
+            Get
+                Return CType(Me("toolstockfile"), String)
+            End Get
+            Set
+                Me("toolstockfile") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>
+        Public Property toolupdatebool() As Byte
+            Get
+                Return CType(Me("toolupdatebool"), Byte)
+            End Get
+            Set
+                Me("toolupdatebool") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>
+        Public Property tooladdemail() As Byte
+            Get
+                Return CType(Me("tooladdemail"), Byte)
+            End Get
+            Set
+                Me("tooladdemail") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("ttumblin@cmtindustrial.com;tpederson@cmtindustrial.com")>
+        Public Property tooladdemailaccounts() As String
+            Get
+                Return CType(Me("tooladdemailaccounts"), String)
+            End Get
+            Set
+                Me("tooladdemailaccounts") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property dymotray() As String
+            Get
+                Return CType(Me("dymotray"), String)
+            End Get
+            Set
+                Me("dymotray") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("SELECT PartNo, (PartNo + '-' + Descrip) As DisplayMember2, REPLACE(REPLACE(Displa" &
+            "yMember2, '/',''),'\', '') As DisplayMember From Estim ORDER BY PartNo ASC")>
+        Public Property GetPartsQueryNoslash() As String
+            Get
+                Return CType(Me("GetPartsQueryNoslash"), String)
+            End Get
+            Set
+                Me("GetPartsQueryNoslash") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("V:\Work Orders")>
+        Public Property OrderFileLocation() As String
+            Get
+                Return CType(Me("OrderFileLocation"), String)
+            End Get
+            Set
+                Me("OrderFileLocation") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property toolimportlocation() As String
+            Get
+                Return CType(Me("toolimportlocation"), String)
+            End Get
+            Set
+                Me("toolimportlocation") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property FusionToolingLocation() As String
+            Get
+                Return CType(Me("FusionToolingLocation"), String)
+            End Get
+            Set
+                Me("FusionToolingLocation") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("-1")>
+        Public Property PartInventoryView1() As Integer
+            Get
+                Return CType(Me("PartInventoryView1"), Integer)
+            End Get
+            Set
+                Me("PartInventoryView1") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("L:\PT SHOP\DYMO Labels\Lot.label")>
+        Public Property DymoMatLotLabel() As String
+            Get
+                Return CType(Me("DymoMatLotLabel"), String)
+            End Get
+            Set
+                Me("DymoMatLotLabel") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("-1")>
+        Public Property OrderUserView() As Integer
+            Get
+                Return CType(Me("OrderUserView"), Integer)
+            End Get
+            Set
+                Me("OrderUserView") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("\\PTI-SRV\Xerox\Certs")>
+        Public Property CertFileLocation() As String
+            Get
+                Return CType(Me("CertFileLocation"), String)
+            End Get
+            Set
+                Me("CertFileLocation") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property lotlabellastprinter() As String
+            Get
+                Return CType(Me("lotlabellastprinter"), String)
+            End Get
+            Set
+                Me("lotlabellastprinter") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property lotlabellasttray() As String
+            Get
+                Return CType(Me("lotlabellasttray"), String)
+            End Get
+            Set
+                Me("lotlabellasttray") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("\\PTI-SRV\ShopPC Shared_PTI-SBS\PT SHOP\ReportFiles\CheckSheet.rpt")>
+        Public Property Partial_InspectionFile() As String
+            Get
+                Return CType(Me("Partial_InspectionFile"), String)
+            End Get
+            Set
+                Me("Partial_InspectionFile") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("\\PTI-SRV\ShopPC Shared_PTI-SBS\PT SHOP\ReportFiles\FullPartInspectReport.rpt")>
+        Public Property Full_InspectionFile() As String
+            Get
+                Return CType(Me("Full_InspectionFile"), String)
+            End Get
+            Set
+                Me("Full_InspectionFile") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("ec0_Bpi3_L_C_Xi_Lwb_Fq@start.processplan.com")>
+        Public Property doccontrolprocessplanemailaccount() As String
+            Get
+                Return CType(Me("doccontrolprocessplanemailaccount"), String)
+            End Get
+            Set
+                Me("doccontrolprocessplanemailaccount") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property tool_labellasttray() As String
+            Get
+                Return CType(Me("tool_labellasttray"), String)
+            End Get
+            Set
+                Me("tool_labellasttray") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property tool_labellastprinter() As String
+            Get
+                Return CType(Me("tool_labellastprinter"), String)
+            End Get
+            Set
+                Me("tool_labellastprinter") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property material_labellasttray() As String
+            Get
+                Return CType(Me("material_labellasttray"), String)
+            End Get
+            Set
+                Me("material_labellasttray") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property material_labellastprinter() As String
+            Get
+                Return CType(Me("material_labellastprinter"), String)
+            End Get
+            Set
+                Me("material_labellastprinter") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\\pti-srv\e2app\Blswin32\Dat\POLYTEC" &
+            "H\BLSDATA.MDB")>
+        Public ReadOnly Property BLSDATAConnectionString() As String
+            Get
+                Return CType(Me("BLSDATAConnectionString"), String)
+            End Get
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>
+        Public Property UpgradeRequired() As Boolean
+            Get
+                Return CType(Me("UpgradeRequired"), Boolean)
+            End Get
+            Set
+                Me("UpgradeRequired") = Value
             End Set
         End Property
     End Class
 End Namespace
 
 Namespace My
-    
-    <Global.Microsoft.VisualBasic.HideModuleNameAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
+
+    <Global.Microsoft.VisualBasic.HideModuleNameAttribute(),
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+     Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>
     Friend Module MySettingsProperty
-        
-        <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
+
+        <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>
         Friend ReadOnly Property Settings() As Global.PTSHOPLITE.My.MySettings
             Get
                 Return Global.PTSHOPLITE.My.MySettings.Default

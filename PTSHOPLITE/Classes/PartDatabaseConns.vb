@@ -44,23 +44,23 @@ Module PartDatabaseConns
             Return Value
         End If
     End Function
-    Public Function AddOperation(PartID As Part, userholder As UserValues) As Integer
-        'Add an operation for the part provided
-        Dim addopform As New AddOperationForm(userholder, PartID)
+    'Public Function AddOperation(PartID As Part, userholder As UserValues) As Integer
+    '    'Add an operation for the part provided
+    '    Dim addopform As New AddOperationForm(userholder, PartID)
 
-        Dim operationvalue As Integer = -1
+    '    Dim operationvalue As Integer = -1
 
-        If addopform.ShowDialog = DialogResult.OK Then
-            'OperationID
-            operationvalue = addopform.operationid
+    '    If addopform.ShowDialog = DialogResult.OK Then
+    '        'OperationID
+    '        operationvalue = addopform.operationid
 
-        End If
+    '    End If
 
-        Return operationvalue
+    '    Return operationvalue
 
 
 
-    End Function
+    'End Function
     Public Function PartExists(partstring As String) As Boolean
 
         'Load the current part information

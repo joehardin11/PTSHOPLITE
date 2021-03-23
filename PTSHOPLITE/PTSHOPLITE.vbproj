@@ -74,19 +74,48 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Document.vb" />
+    <Compile Include="Classes\Flagtype.vb" />
+    <Compile Include="Classes\OLEDatabase.vb" />
     <Compile Include="Classes\Operation.vb" />
     <Compile Include="Classes\Order.vb" />
     <Compile Include="Classes\Part.vb" />
     <Compile Include="Classes\PartEngineering.vb" />
     <Compile Include="Classes\PartRouting.vb" />
+    <Compile Include="Classes\RoutingStep.vb" />
+    <Compile Include="Classes\Settings.vb" />
+    <Compile Include="Classes\Setup.vb" />
     <Compile Include="Classes\UserValues.vb" />
-    <Compile Include="Form1.vb">
+    <Compile Include="Flagger\FlaggerModule.vb" />
+    <Compile Include="Flagger\FlagViewer.Designer.vb" />
+    <Compile Include="Flagger\FlagViewer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
+    <Compile Include="Forms\Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\SelectComboForm.Designer.vb">
+      <DependentUpon>SelectComboForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectComboForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.designer.vb">
+      <DependentUpon>SettingsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SubcontrolForm.Designer.vb">
+      <DependentUpon>SubcontrolForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SubcontrolForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralUseModule.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -102,11 +131,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="PartDatabaseConns.vb" />
+    <Compile Include="Classes\PartDatabaseConns.vb" />
+    <Compile Include="Scheduling\SchedulingModule.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Flagger\FlagViewer.resx" />
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectComboForm.resx">
+      <DependentUpon>SelectComboForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SubcontrolForm.resx">
+      <DependentUpon>SubcontrolForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

@@ -100,30 +100,30 @@ Public Class Part
 
 
     End Sub
-    Public Sub Addnewflag(Flagtype As Integer, userid As Integer, Description As String)
+    'Public Sub Addnewflag(Flagtype As Integer, userid As Integer, Description As String)
 
-        'Determine 
-        ' AddNew to PartEng
+    '    'Determine 
+    '    ' AddNew to PartEng
 
-        Dim partengcon As New SqlConnection(My.Settings.SHOPDB)
-        Dim partengcomm As New SqlCommand("INSERT Into PartFlags (FlagTypeid, Description, Userholder, DateEntered, Active, Partnumber) Values (@flagtype, @description, @userholder, @dateentered, @active, @partnumber)", partengcon)
-        partengcomm.Parameters.AddWithValue("@flagtype", Flagtype)
-        partengcomm.Parameters.AddWithValue("@description", Description)
-        partengcomm.Parameters.AddWithValue("@userholder", userid)
-        partengcomm.Parameters.AddWithValue("@dateentered", Now)
-        partengcomm.Parameters.AddWithValue("@active", True)
-        partengcomm.Parameters.AddWithValue("@partnumber", Partno)
+    '    Dim partengcon As New SqlConnection(My.Settings.SHOPDB)
+    '    Dim partengcomm As New SqlCommand("INSERT Into PartFlags (FlagTypeid, Description, Userholder, DateEntered, Active, Partnumber) Values (@flagtype, @description, @userholder, @dateentered, @active, @partnumber)", partengcon)
+    '    partengcomm.Parameters.AddWithValue("@flagtype", Flagtype)
+    '    partengcomm.Parameters.AddWithValue("@description", Description)
+    '    partengcomm.Parameters.AddWithValue("@userholder", userid)
+    '    partengcomm.Parameters.AddWithValue("@dateentered", Now)
+    '    partengcomm.Parameters.AddWithValue("@active", True)
+    '    partengcomm.Parameters.AddWithValue("@partnumber", Partno)
 
-        Try
-            partengcon.Open()
-            partengcomm.ExecuteNonQuery()
-            partengcon.Close()
+    '    Try
+    '        partengcon.Open()
+    '        partengcomm.ExecuteNonQuery()
+    '        partengcon.Close()
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+    '    Catch ex As Exception
+    '        MsgBox(ex.Message)
+    '    End Try
 
-    End Sub
+    'End Sub
     Public Sub saveblankinfo()
         Dim blankconn As New OleDbConnection(My.Settings.E2Database)
         Dim blankcom As New OleDbCommand("UPDATE Estim Set User_Number1 = @num1, User_Number2= @num2, User_Number3 = @num3, User_Number4= @num4, " &
