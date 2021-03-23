@@ -18,7 +18,7 @@ Public Class Document
     Public Sub New(file As Integer)
         'Open the part information
 
-        Dim sqlconn As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim sqlconn As New SqlConnection(My.Settings.SHOPDB)
         Dim sqlcomm As New SqlCommand("SELECT * From Documents WHERE Id = @fileid", sqlconn)
         sqlcomm.Parameters.AddWithValue("@fileid", file)
         Fileid = file
@@ -51,7 +51,7 @@ Public Class Document
 
     Public Sub SaveValues()
         'Save the document information
-        Dim sqlconn As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim sqlconn As New SqlConnection(My.Settings.SHOPDB)
 
         Dim sqlcomm As New SqlCommand("UPDATE Documents Set Description = @description, Revision = @revision, " &
                                       "Path = @path, LastDate = @lastdate, Type = @type, DrawingNumber = @drawingnumber, " &
@@ -85,7 +85,7 @@ Public Class Document
 
     Sub Deletedocument()
         'Delete the file from the face of the earth
-        Dim sqlconn As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim sqlconn As New SqlConnection(My.Settings.SHOPDB)
         Dim sqlcomm As New SqlCommand("UPDATE Documents Set State = 'Obsolete' WHERE Id = @id", sqlconn)
         'Add parameters to the command
         sqlcomm.Parameters.AddWithValue("@id", Fileid)

@@ -33,134 +33,131 @@ Public Class Operation
     Public Oneshift As Boolean
 
 
-    Public Sub New(job As String, stepnum As Integer, oledb As Boolean, poolconnections As Boolean, Optional connectionop As OleDbConnection = Nothing)
+    'Public Sub New(job As String, stepnum As Integer, oledb As Boolean, poolconnections As Boolean, Optional connectionop As OleDbConnection = Nothing)
 
-        'Look up and add to opscheduling if there isn't a version of that
-        Dim checkconn As New OleDbConnection(My.Settings.E2Database)
-        Dim checkcomm As New OleDbCommand("SELECT COUNT(*) FROM OpScheduling WHERE JobNo = @jobno AND StepNo=@stepno", checkconn)
-        checkcomm.Parameters.AddWithValue("@jobno", job)
-        checkcomm.Parameters.AddWithValue("@stepno", stepnum)
+    '    'Look up and add to opscheduling if there isn't a version of that
+    '    Dim checkconn As New OleDbConnection(My.Settings.E2Database)
+    '    Dim checkcomm As New OleDbCommand("SELECT COUNT(*) FROM OpScheduling WHERE JobNo = @jobno AND StepNo=@stepno", checkconn)
+    '    checkcomm.Parameters.AddWithValue("@jobno", job)
+    '    checkcomm.Parameters.AddWithValue("@stepno", stepnum)
 
-        'Dim insertconn As New OleDbConnection(My.Settings.PartHomeDatabaseString)
-        'Dim insertcomm As New OleDbCommand("INSERT INTO OpScheduling (JobNo, StepNo) VALUES (@jobno, @stepno)", insertconn)
+    '    'Dim insertconn As New OleDbConnection(My.Settings.PartHomeDatabaseString)
+    '    'Dim insertcomm As New OleDbCommand("INSERT INTO OpScheduling (JobNo, StepNo) VALUES (@jobno, @stepno)", insertconn)
 
-        ''Look up and add to opscheduling if there isn't a version of that
-        'Dim checkorderconn As New OleDbConnection(My.Settings.PartHomeDatabaseString)
-        'Dim checkordercomm As New OleDbCommand("SELECT COUNT(*) FROM OrderScheduling WHERE JobNo = @jobno", checkinsertconn)
+    '    ''Look up and add to opscheduling if there isn't a version of that
+    '    'Dim checkorderconn As New OleDbConnection(My.Settings.PartHomeDatabaseString)
+    '    'Dim checkordercomm As New OleDbCommand("SELECT COUNT(*) FROM OrderScheduling WHERE JobNo = @jobno", checkinsertconn)
 
-        'Dim orderinsertconn As New OleDbConnection(My.Settings.PartHomeDatabaseString)
-        'Dim orderinsertcomm As New OleDbCommand("INSERT INTO OrderScheduling (JobNo) Values (@jobno)" FROM OrderDet; WHERE NOT EXISTS (SELECT Null FROM OrderScheduling WHERE JobNo = @jobno)", orderinsertconn)
-        'orderinsertcomm.Parameters.AddWithValue("@jobno", job)
+    '    'Dim orderinsertconn As New OleDbConnection(My.Settings.PartHomeDatabaseString)
+    '    'Dim orderinsertcomm As New OleDbCommand("INSERT INTO OrderScheduling (JobNo) Values (@jobno)" FROM OrderDet; WHERE NOT EXISTS (SELECT Null FROM OrderScheduling WHERE JobNo = @jobno)", orderinsertconn)
+    '    'orderinsertcomm.Parameters.AddWithValue("@jobno", job)
 
-        If oledb = True Then
+    '    If oledb = True Then
 
-            'OLEDB Queries
-            Dim opquery As String = "SELECT OrderRouting.JobNo, OrderRouting.StepNo, OrderRouting.PartNo, OrderRouting.WorkCntr, OrderDet.QtyOrdered, OrderDet.QtyToMake, OrderDet.DueDate, " &
-            "TotEstHrs, TotHrsLeft, TotActHrs, OrderRouting.EstimStartDate, OrderRouting.EstimEndDate, OperCode, OrderRouting.Descrip, CycleTime, CycleUnit, " &
-            " SetupTime, TimeUnit, ActualPcsGood, ActualPcsScrap, OrderDet.Revision FROM (OrderRouting INNER JOIN OrderDet ON OrderRouting.JobNo = OrderDet.JobNo) WHERE OrderRouting.JobNo = @jobno AND OrderRouting.StepNo = @stepno"
+    '        'OLEDB Queries
+    '        Dim opquery As String = "SELECT OrderRouting.JobNo, OrderRouting.StepNo, OrderRouting.PartNo, OrderRouting.WorkCntr, OrderDet.QtyOrdered, OrderDet.QtyToMake, OrderDet.DueDate, " &
+    '        "TotEstHrs, TotHrsLeft, TotActHrs, OrderRouting.EstimStartDate, OrderRouting.EstimEndDate, OperCode, OrderRouting.Descrip, CycleTime, CycleUnit, " &
+    '        " SetupTime, TimeUnit, ActualPcsGood, ActualPcsScrap, OrderDet.Revision FROM (OrderRouting INNER JOIN OrderDet ON OrderRouting.JobNo = OrderDet.JobNo) WHERE OrderRouting.JobNo = @jobno AND OrderRouting.StepNo = @stepno"
 
-            'Add the connection
-            Dim selectconn As New OleDbConnection(My.Settings.E2Database)
-            Dim selectcomm As OleDbCommand  'Add the command
-            If poolconnections = False Then 'Pool the oledb connections
-                selectcomm = New OleDbCommand(opquery, selectconn)
-            Else
-                selectcomm = New OleDbCommand(opquery, connectionop)
-            End If
-            selectcomm.Parameters.AddWithValue("@jobno", job)
-            selectcomm.Parameters.AddWithValue("@stepno", stepnum)
-            Dim datatb As New DataTable
+    '        'Add the connection
+    '        Dim selectconn As New OleDbConnection(My.Settings.E2Database)
+    '        Dim selectcomm As OleDbCommand  'Add the command
+    '        If poolconnections = False Then 'Pool the oledb connections
+    '            selectcomm = New OleDbCommand(opquery, selectconn)
+    '        Else
+    '            selectcomm = New OleDbCommand(opquery, connectionop)
+    '        End If
+    '        selectcomm.Parameters.AddWithValue("@jobno", job)
+    '        selectcomm.Parameters.AddWithValue("@stepno", stepnum)
+    '        Dim datatb As New DataTable
 
-            'Scheduling Connection
-            Dim opinfoquery As String = "SELECT Programming, Tooling, Completed, OrderScheduling.Material, CurrentMachine, EstimStartDate, EstimEndDate, Oneshift From (OpScheduling INNER JOIN OrderScheduling ON OpScheduling.JobNo = OrderScheduling.JobNo) WHERE OpScheduling.JobNo = @jobno and OpScheduling.StepNo = @stepno"
+    '        'Scheduling Connection
+    '        Dim opinfoquery As String = "SELECT Programming, Tooling, Completed, OrderScheduling.Material, CurrentMachine, EstimStartDate, EstimEndDate, Oneshift From (OpScheduling INNER JOIN OrderScheduling ON OpScheduling.JobNo = OrderScheduling.JobNo) WHERE OpScheduling.JobNo = @jobno and OpScheduling.StepNo = @stepno"
 
-            Dim infoconn As New OleDbConnection(My.Settings.E2Database)
-            Dim infocomm As New OleDbCommand(opinfoquery, infoconn)
-            infocomm.Parameters.AddWithValue("@jobno", job)
-            infocomm.Parameters.AddWithValue("@stepno", stepnum)
+    '        Dim infoconn As New OleDbConnection(My.Settings.E2Database)
+    '        Dim infocomm As New OleDbCommand(opinfoquery, infoconn)
+    '        infocomm.Parameters.AddWithValue("@jobno", job)
+    '        infocomm.Parameters.AddWithValue("@stepno", stepnum)
 
-            Dim infodt As New DataTable
+    '        Dim infodt As New DataTable
 
-            Try
-                checkconn.Open()
-                Dim Dread As Integer = checkcomm.ExecuteScalar
-                If Dread = 0 Then
-                    checkcomm.CommandText = "INSERT INTO OpScheduling (JobNo, StepNo) VALUES (@jobno, @stepno)"
-                    checkcomm.ExecuteNonQuery()
-                End If
+    '        Try
+    '            checkconn.Open()
+    '            Dim Dread As Integer = checkcomm.ExecuteScalar
+    '            If Dread = 0 Then
+    '                checkcomm.CommandText = "INSERT INTO OpScheduling (JobNo, StepNo) VALUES (@jobno, @stepno)"
+    '                checkcomm.ExecuteNonQuery()
+    '            End If
 
-                checkcomm.CommandText = "SELECT COUNT(*) FROM OrderScheduling WHERE JobNo = @jobno"
+    '            checkcomm.CommandText = "SELECT COUNT(*) FROM OrderScheduling WHERE JobNo = @jobno"
 
-                Dread = checkcomm.ExecuteScalar
-                If Dread = 0 Then
-                    checkcomm.CommandText = "INSERT INTO OrderScheduling (JobNo) Values (@jobno)"
-                    checkcomm.ExecuteNonQuery()
-                End If
-                checkconn.Close()
+    '            Dread = checkcomm.ExecuteScalar
+    '            If Dread = 0 Then
+    '                checkcomm.CommandText = "INSERT INTO OrderScheduling (JobNo) Values (@jobno)"
+    '                checkcomm.ExecuteNonQuery()
+    '            End If
+    '            checkconn.Close()
 
-                Using dad As New OleDbDataAdapter(selectcomm)
-                    dad.Fill(datatb)
-                End Using
+    '            Using dad As New OleDbDataAdapter(selectcomm)
+    '                dad.Fill(datatb)
+    '            End Using
 
-                Using infodadapt As New OleDbDataAdapter(infocomm)
-                    infodadapt.Fill(infodt)
-                End Using
+    '            Using infodadapt As New OleDbDataAdapter(infocomm)
+    '                infodadapt.Fill(infodt)
+    '            End Using
 
-            Catch ex As Exception
-                checkconn.Close()
-                selectconn.Close()
-                infoconn.Close()
-                'matconn.Close()
-                MsgBox("Database Error: " & ex.Message)
-                Exit Sub
+    '        Catch ex As Exception
+    '            checkconn.Close()
+    '            selectconn.Close()
+    '            infoconn.Close()
+    '            'matconn.Close()
+    '            MsgBox("Database Error: " & ex.Message)
+    '            Exit Sub
 
-            End Try
-            If datatb.Rows.Count > 0 Then
-                JobNo = datatb.Rows(0).Item(0)          'JobNo
-                Stepno = datatb.Rows(0).Item(1)         'Stepno
-                Partno = datatb.Rows(0).Item(2)         'Partno
-                WorkCenter = NotNull(datatb.Rows(0).Item(3), "")     'WorkCenter
-                OrderQty = datatb.Rows(0).Item(4)       'Orderqty
-                MakeQty = datatb.Rows(0).Item(5)        'makeQty
-                duedate = datatb.Rows(0).Item(6)        'DueDate
-                totalesthours = datatb.Rows(0).Item(7)      'Esitmateds hours left
-                totalhoursleft = datatb.Rows(0).Item(8)     'totalhoursleft
-                totalacthours = datatb.Rows(0).Item(9)   'Actual hours
+    '        End Try
+    '        If datatb.Rows.Count > 0 Then
+    '            JobNo = datatb.Rows(0).Item(0)          'JobNo
+    '            Stepno = datatb.Rows(0).Item(1)         'Stepno
+    '            Partno = datatb.Rows(0).Item(2)         'Partno
+    '            WorkCenter = NotNull(datatb.Rows(0).Item(3), "")     'WorkCenter
+    '            OrderQty = datatb.Rows(0).Item(4)       'Orderqty
+    '            MakeQty = datatb.Rows(0).Item(5)        'makeQty
+    '            duedate = datatb.Rows(0).Item(6)        'DueDate
+    '            totalesthours = datatb.Rows(0).Item(7)      'Esitmateds hours left
+    '            totalhoursleft = datatb.Rows(0).Item(8)     'totalhoursleft
+    '            totalacthours = datatb.Rows(0).Item(9)   'Actual hours
 
-                OperationCode = datatb.Rows(0).Item(12)    'Operationcode
-                description = datatb.Rows(0).Item(13)      'Description
-                cycletime = datatb.Rows(0).Item(14)        'Cycletime
-                cycleunit = datatb.Rows(0).Item(15)        'Cycleunit
-                setuptime = datatb.Rows(0).Item(16)        'setuptime
-                setupunit = datatb.Rows(0).Item(17)         'Setupunit
-                actualpcsgood = NotNull(datatb.Rows(0).Item(18), 0)    'Pieces Good
-                actualpcsscrap = NotNull(datatb.Rows(0).Item(19), 0)   'Pieces scrap
-                Revision = datatb.Rows(0).Item(20)
-                'Revision
-            Else
-                JobNo = job
-                Stepno = stepnum
-            End If
+    '            OperationCode = datatb.Rows(0).Item(12)    'Operationcode
+    '            description = datatb.Rows(0).Item(13)      'Description
+    '            cycletime = datatb.Rows(0).Item(14)        'Cycletime
+    '            cycleunit = datatb.Rows(0).Item(15)        'Cycleunit
+    '            setuptime = datatb.Rows(0).Item(16)        'setuptime
+    '            setupunit = datatb.Rows(0).Item(17)         'Setupunit
+    '            actualpcsgood = NotNull(datatb.Rows(0).Item(18), 0)    'Pieces Good
+    '            actualpcsscrap = NotNull(datatb.Rows(0).Item(19), 0)   'Pieces scrap
+    '            Revision = datatb.Rows(0).Item(20)
+    '            'Revision
+    '        Else
+    '            JobNo = job
+    '            Stepno = stepnum
+    '        End If
 
-            'Program = NotNull(infodt.Rows(0).Item(0), False)   'Program
+    '        'Program = NotNull(infodt.Rows(0).Item(0), False)   'Program
 
-            Program = Checkprogram(Stepno, Partno)
+    '        '   Program = Checkprogram(Stepno, Partno)
 
-            Tooling = NotNull(infodt.Rows(0).Item(1), False)    'Tooling
-            Completed = NotNull(infodt.Rows(0).Item(2), False)   'Completed
-            Material = NotNull(infodt.Rows(0).Item(3), False)       'Material
-            Assignedmachine = NotNull(infodt.Rows(0).Item(4), "")
-            startdate = NotNull(infodt.Rows(0).Item(5), Today())       'Startdate
-            enddate = NotNull(infodt.Rows(0).Item(6), Add_businessdays(startdate, totalhoursleft, Oneshift))         'Enddate
-            Oneshift = NotNull(infodt.Rows(0).Item(7), False)
+    '        Tooling = NotNull(infodt.Rows(0).Item(1), False)    'Tooling
+    '        Completed = NotNull(infodt.Rows(0).Item(2), False)   'Completed
+    '        Material = NotNull(infodt.Rows(0).Item(3), False)       'Material
+    '        Assignedmachine = NotNull(infodt.Rows(0).Item(4), "")
+    '        startdate = NotNull(infodt.Rows(0).Item(5), Today())       'Startdate
+    '        enddate = NotNull(infodt.Rows(0).Item(6), Add_businessdays(startdate, totalhoursleft, Oneshift))         'Enddate
+    '        Oneshift = NotNull(infodt.Rows(0).Item(7), False)
 
-        End If
+    '    End If
 
-    End Sub
+    'End Sub
 
-    Public Function Getsetup() As Setup
-
-    End Function
     Public Sub SetMachineAndDates()
 
         Dim setdateconn As New OleDbConnection(My.Settings.E2Database)

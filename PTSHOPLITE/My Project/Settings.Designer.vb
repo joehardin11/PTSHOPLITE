@@ -86,6 +86,44 @@ Namespace My
                 Me("SQLPT") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("SELECT PartNo, (PartNo + '-' + Descrip) As DisplayMember2, REPLACE(REPLACE(Displa"& _ 
+            "yMember2, '/',''),'\', '') As DisplayMember From Estim ORDER BY PartNo ASC")>  _
+        Public Property GetPartsQueryNoslash() As String
+            Get
+                Return CType(Me("GetPartsQueryNoslash"),String)
+            End Get
+            Set
+                Me("GetPartsQueryNoslash") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("SELECT PartNo, (PartNo + '-' + Descrip) As DisplayMember From Estim ORDER BY Part"& _ 
+            "No ASC")>  _
+        Public Property GetPartQuery() As String
+            Get
+                Return CType(Me("GetPartQuery"),String)
+            End Get
+            Set
+                Me("GetPartQuery") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("V:\Engineering\FINAL PRINTS")>  _
+        Public Property DCFolder() As String
+            Get
+                Return CType(Me("DCFolder"),String)
+            End Get
+            Set
+                Me("DCFolder") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

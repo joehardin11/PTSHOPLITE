@@ -117,10 +117,7 @@ Public Class Order
 
     End Sub
 
-    Public Function Getsetup() As Setup
 
-
-    End Function
 
     Private Function unitsandtimeHRS(timevalue As Single, unitvalue As String) As Single
 

@@ -98,7 +98,7 @@ Module PartDatabaseConns
 
         deletestring = "DELETE FROM Operation WHERE Id = @id"
 
-        Dim deleteconn As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim deleteconn As New SqlConnection(My.Settings.SHOPDB)
         Dim deletecomm As New SqlCommand(deletestring, deleteconn)
         deletecomm.Parameters.AddWithValue("@id", OperationID)
 
@@ -176,7 +176,7 @@ Module PartDatabaseConns
 
         deletestring = "DELETE FROM SETUP WHERE Operation = @id"
 
-        Dim deleteconn As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim deleteconn As New SqlConnection(My.Settings.SHOPDB)
         Dim deletecomm As New SqlCommand(deletestring, deleteconn)
         deletecomm.Parameters.AddWithValue("@id", OperationID)
 
@@ -194,7 +194,7 @@ Module PartDatabaseConns
     End Sub
     Public Sub AddSetup(Opidvalue As Integer, partid As String, description As String)
         '#### Add a setup into the database
-        Dim connstring As String = My.Settings.PartDatabaseString.ToString
+        Dim connstring As String = My.Settings.SHOPDB.ToString
 
         '**** Insert into the database 
         Dim insertstring As String
@@ -220,7 +220,7 @@ Module PartDatabaseConns
 
 
     Public Sub AddInspection(Opid As Integer, partid As Part, description As String, userholder As UserValues)
-        Dim connstring As String = My.Settings.PartDatabaseString.ToString
+        Dim connstring As String = My.Settings.SHOPDB.ToString
 
         Dim insertstring As String
         insertstring = "INSERT INTO Inspection (PartID, Operation, Description, EnteredBy, EnteredDate, Revision) VALUES (@partid, @operation, @description, @enteredby, @enterdate, @rev)"
@@ -349,7 +349,7 @@ Module PartDatabaseConns
     Public Function ScalarSelect(selectorcommand As SqlCommand)
         Dim outputholder As Object = Nothing
 
-        Dim scalarconn As New SqlConnection(My.Settings.PartDatabaseString.ToString)
+        Dim scalarconn As New SqlConnection(My.Settings.SHOPDB.ToString)
         selectorcommand.Connection = scalarconn
 
         Try
@@ -370,7 +370,7 @@ Module PartDatabaseConns
 
 
         'if the boolean says to use the sqldatase
-        Dim fillcon As New SqlConnection(My.Settings.PartDatabaseString.ToString)
+        Dim fillcon As New SqlConnection(My.Settings.SHOPDB.ToString)
         fillcomm.Connection = fillcon
 
         Try
@@ -455,7 +455,7 @@ Module PartDatabaseConns
 
         Else
             'if the boolean says to use the sqldatase
-            Dim fillcon As New SqlConnection(My.Settings.PartDatabaseString.ToString)
+            Dim fillcon As New SqlConnection(My.Settings.SHOPDB.ToString)
             Dim fillcom As New SqlCommand(fillstring, fillcon)
 
             Try
@@ -506,7 +506,7 @@ Module PartDatabaseConns
 
         Else
             'if the boolean says to use the sqldatase
-            Dim fillcon As New SqlConnection(My.Settings.PartDatabaseString.ToString)
+            Dim fillcon As New SqlConnection(My.Settings.SHOPDB.ToString)
             Dim fillcom As New SqlCommand(fillstring, fillcon)
 
             Try
@@ -557,7 +557,7 @@ Module PartDatabaseConns
 
         Else
             'if the boolean says to use the sqldatase
-            Dim fillcon As New SqlConnection(My.Settings.PartDatabaseString.ToString)
+            Dim fillcon As New SqlConnection(My.Settings.SHOPDB.ToString)
             Dim fillcom As New SqlCommand(fillstring, fillcon)
 
             Try

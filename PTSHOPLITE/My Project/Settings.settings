@@ -21,5 +21,14 @@
     <Setting Name="SQLPT" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="GetPartsQueryNoslash" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT PartNo, (PartNo + '-' + Descrip) As DisplayMember2, REPLACE(REPLACE(DisplayMember2, '/',''),'\', '') As DisplayMember From Estim ORDER BY PartNo ASC</Value>
+    </Setting>
+    <Setting Name="GetPartQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT PartNo, (PartNo + '-' + Descrip) As DisplayMember From Estim ORDER BY PartNo ASC</Value>
+    </Setting>
+    <Setting Name="DCFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">V:\Engineering\FINAL PRINTS</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

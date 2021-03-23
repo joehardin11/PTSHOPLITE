@@ -30,7 +30,7 @@ Public Class PartEngineering
         'Get all the info about a part
 
         Partnumber = partholder
-        Dim partengdb As New SqlDatabase(My.Settings.PartDatabaseString)
+        Dim partengdb As New SqlDatabase(My.Settings.SHOPDB)
         Dim partengdt As New DataTable
 
 
@@ -71,18 +71,18 @@ Public Class PartEngineering
 
 
         'Get all flags on a part
-        Dim flagtable As New DataTable
-        flagtable = GetPartFlags(Partnumber, False)
-        ActiveFlags = flagtable
+        '  Dim flagtable As New DataTable
+        '   flagtable = GetPartFlags(Partnumber, False)
+        '   ActiveFlags = flagtable
 
-        PartFlags = flagtable
+        '   PartFlags = flagtable
 
 
     End Sub
 
     Public Sub SavePartEng()
 
-        Dim setmatconn As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim setmatconn As New SqlConnection(My.Settings.SHOPDB)
         Dim setmatcomm As New SqlCommand("UPDATE PartEng Set ApprovedRev=@approvedrev, NewPart=@newpart, TravellerPrint=@travprint, MaterialApproved=@matapprove, MaterialUser=@matuser, Materialdate=@matdate, " &
             "ProcessApproved=@processapprove, processuser=@processuser, processdate = @processdate, qualityapproved=@qualityapprove, qualityuser = @qualityuser, qualitydate=@qualitydate, InspectionLevel=@level, " &
                                          "DocConApproved = @docctrlapproved, DocConDate = @docctrldate, DocConUser = @docctrluser, PeerReview=@peerreview  WHERE Partnumber=@partno", setmatconn)
@@ -127,7 +127,7 @@ Public Class PartEngineering
         'Determine 
         ' AddNew to PartEng
 
-        Dim partengcon As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim partengcon As New SqlConnection(My.Settings.SHOPDB)
         Dim partengcomm As New SqlCommand("INSERT Into PartEng (ApprovedRev, Partnumber) Values (@apprev, @partnumber)", partengcon)
         partengcomm.Parameters.AddWithValue("@apprev", ApprovedRev)
         partengcomm.Parameters.AddWithValue("@partnumber", Partnumber)

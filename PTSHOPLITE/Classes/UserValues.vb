@@ -17,7 +17,7 @@ Public Class UserValues
     Public Sub New(User As String)
         UserId = -1
         Try
-            Dim loginconn As New SqlConnection(My.Settings.PartDatabaseString)
+            Dim loginconn As New SqlConnection(My.Settings.SHOPDB)
             Dim loginstring As String = "SELECT SetupRights, EngineeringRights, QCRights, AdminRights, InventoryRights, Password, Id, DocConRights FROM Users WHERE Username = @user"
             Dim logincomm As New SqlCommand(loginstring, loginconn)
             logincomm.Parameters.AddWithValue("@user", User)
@@ -50,7 +50,7 @@ Public Class UserValues
         UserId = -1
 
         Try
-            Dim loginconn As New SqlConnection(My.Settings.PartDatabaseString)
+            Dim loginconn As New SqlConnection(My.Settings.SHOPDB)
             Dim loginstring As String = "SELECT SetupRights, EngineeringRights, QCRights, AdminRights, InventoryRights, Username, Id, DocConRights FROM Users WHERE Id = @idval"
             Dim logincomm As New SqlCommand(loginstring, loginconn)
             logincomm.Parameters.AddWithValue("@idval", UserIdval)
@@ -81,7 +81,7 @@ Public Class UserValues
     End Sub
 
     Public Sub Update()
-        Dim updateconn As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim updateconn As New SqlConnection(My.Settings.SHOPDB)
         Try
             Dim updatestring As String = "UPDATE Users SET SetupRights=@setup, EngineeringRights=@eng, QCRights=@qcrights, AdminRights=@admin, InventoryRights=@inventory WHERE Id = @id"
 
@@ -136,7 +136,7 @@ Public Class UserValues
 
     End Sub
     Public Sub UpdatePassword(passwordnew)
-        Dim updateconn As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim updateconn As New SqlConnection(My.Settings.SHOPDB)
         Try
             Dim updatestring As String = "UPDATE Users SET Password = @pass WHERE UserName = @username"
 
@@ -165,7 +165,7 @@ Public Class UserValues
         If UserId < 0 Then
             Return Nothing
         End If
-        Dim userflagdb As New SqlDatabase(My.Settings.PartDatabaseString)
+        Dim userflagdb As New SqlDatabase(My.Settings.SHOPDB)
         Dim userflagdt As New DataTable
         userflagdt = Nothing
 
@@ -183,7 +183,7 @@ Public Class UserValues
 
     Public Function AddArea(areaid As Integer, Optional userresolve As Boolean = False) As Integer
 
-        Dim userareaconn As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim userareaconn As New SqlConnection(My.Settings.SHOPDB)
         Dim userareacomm As New SqlCommand("INSERT INTO UserAreas (Area, UserId, CanResolve) VALUES (@area, @user, @resolve); SELECT SCOPE_IDENTITY()", userareaconn)
         userareacomm.Parameters.AddWithValue("@area", areaid)
         userareacomm.Parameters.AddWithValue("@user", UserId)
@@ -208,7 +208,7 @@ Public Class UserValues
 
     Public Sub DeleteArea(areaid As Integer)
 
-        Dim userareaconn As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim userareaconn As New SqlConnection(My.Settings.SHOPDB)
         Dim userareacomm As New SqlCommand("DELETE FROM UserAreas WHERE Id = @areaid AND UserId = @userid", userareaconn)
         userareacomm.Parameters.AddWithValue("@areaid", areaid)
         userareacomm.Parameters.AddWithValue("@userid", UserId)
@@ -228,7 +228,7 @@ Public Class UserValues
 
     Public Sub UpdateAreaResolveRights(areaid As Integer, resolveright As Boolean)
 
-        Dim userareaconn As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim userareaconn As New SqlConnection(My.Settings.SHOPDB)
         Dim userareacomm As New SqlCommand("UPDATE UserAreas SET CanResolve = @resolve WHERE Id = @id", userareaconn)
         userareacomm.Parameters.AddWithValue("@resolve", resolveright)
         userareacomm.Parameters.AddWithValue("@id", areaid)
