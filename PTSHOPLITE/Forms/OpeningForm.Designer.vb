@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class OpeningForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -35,21 +35,21 @@ Partial Class Form1
         '
         'GoButton
         '
-        Me.GoButton.Location = New System.Drawing.Point(416, 83)
+        Me.GoButton.Location = New System.Drawing.Point(415, 87)
         Me.GoButton.Name = "GoButton"
         Me.GoButton.Size = New System.Drawing.Size(75, 23)
         Me.GoButton.TabIndex = 1
         Me.GoButton.Text = "Go"
         Me.GoButton.UseVisualStyleBackColor = True
         '
-        'Form1
+        'OpeningForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.GoButton)
         Me.Controls.Add(Me.TextBox1)
-        Me.Name = "Form1"
+        Me.Name = "OpeningForm"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
         Me.PerformLayout()

@@ -25,7 +25,7 @@ Public Class Order
 
     Public Sub New(job As String, oledb As Boolean, poolconnections As Boolean, Optional connectionop As OleDbConnection = Nothing)
 
-        'Find out of a copy of the operation exists in the internal database
+        'Find out if a copy of the operation exists in the internal database
         Dim insertconn As New OleDbConnection(My.Settings.E2Database)
         Dim insertcomm As New OleDbCommand("SELECT COUNT(*) FROM OrderScheduling WHERE JobNo = @jobno", insertconn)
         insertcomm.Parameters.AddWithValue("@jobno", job)

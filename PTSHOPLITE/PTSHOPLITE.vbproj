@@ -82,10 +82,16 @@
     <Compile Include="Classes\RoutingStep.vb" />
     <Compile Include="Classes\SqlDatabase.vb" />
     <Compile Include="Classes\UserValues.vb" />
-    <Compile Include="Forms\Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Forms\MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1.vb">
+    <Compile Include="Forms\MainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OpeningForm.Designer.vb">
+      <DependentUpon>OpeningForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OpeningForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\JobInfoForm.designer.vb">
@@ -123,8 +129,11 @@
     <Compile Include="SchedulingModule.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OpeningForm.resx">
+      <DependentUpon>OpeningForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\JobInfoForm.resx">
       <DependentUpon>JobInfoForm.vb</DependentUpon>

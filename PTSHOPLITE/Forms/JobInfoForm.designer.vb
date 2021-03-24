@@ -113,25 +113,25 @@ Partial Class JobInfoForm
         'HomeToolStripMenuItem
         '
         Me.HomeToolStripMenuItem.Name = "HomeToolStripMenuItem"
-        Me.HomeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.HomeToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.HomeToolStripMenuItem.Text = "Home (Start Over)"
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'BackToolStripMenuItem
         '
         Me.BackToolStripMenuItem.Name = "BackToolStripMenuItem"
-        Me.BackToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BackToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.BackToolStripMenuItem.Text = "Back"
         '
         'PartSearchToolStripMenuItem
         '
         Me.PartSearchToolStripMenuItem.Name = "PartSearchToolStripMenuItem"
-        Me.PartSearchToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PartSearchToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.PartSearchToolStripMenuItem.Text = "Part Search"
         '
         'ToolStripSeparator1
