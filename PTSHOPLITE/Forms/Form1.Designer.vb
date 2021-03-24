@@ -22,19 +22,40 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.GoButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(134, 87)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(275, 20)
+        Me.TextBox1.TabIndex = 0
+        '
+        'GoButton
+        '
+        Me.GoButton.Location = New System.Drawing.Point(416, 83)
+        Me.GoButton.Name = "GoButton"
+        Me.GoButton.Size = New System.Drawing.Size(75, 23)
+        Me.GoButton.TabIndex = 1
+        Me.GoButton.Text = "Go"
+        Me.GoButton.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1036, 556)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.GoButton)
+        Me.Controls.Add(Me.TextBox1)
         Me.Name = "Form1"
-        Me.Text = "Main Page"
+        Me.Text = "Form1"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents GoButton As Button
 End Class
