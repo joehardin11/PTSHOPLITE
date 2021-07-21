@@ -82,10 +82,10 @@
     <Compile Include="Classes\RoutingStep.vb" />
     <Compile Include="Classes\SqlDatabase.vb" />
     <Compile Include="Classes\UserValues.vb" />
-    <Compile Include="Forms\MainForm.Designer.vb">
-      <DependentUpon>MainForm.vb</DependentUpon>
+    <Compile Include="Forms\ProductionReporting.Designer.vb">
+      <DependentUpon>ProductionReporting.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainForm.vb">
+    <Compile Include="Forms\ProductionReporting.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\OpeningForm.Designer.vb">
@@ -129,8 +129,8 @@
     <Compile Include="SchedulingModule.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\ProductionReporting.resx">
+      <DependentUpon>ProductionReporting.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OpeningForm.resx">
       <DependentUpon>OpeningForm.vb</DependentUpon>

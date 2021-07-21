@@ -33,6 +33,7 @@ Partial Class JobInfoForm
         Me.JobNoLabel = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripComboBox()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
+        Me.JobLoading_Progressbar = New System.Windows.Forms.ToolStripProgressBar()
         Me.ReleaseTabControl1 = New System.Windows.Forms.TabControl()
         Me.JobInfoPage = New System.Windows.Forms.TabPage()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -93,10 +94,11 @@ Partial Class JobInfoForm
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1, Me.ToolStripSeparator1, Me.JobNoLabel, Me.ToolStripComboBox1, Me.ToolStripLabel1})
+        Me.ToolStrip1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1, Me.ToolStripSeparator1, Me.JobNoLabel, Me.ToolStripComboBox1, Me.ToolStripLabel1, Me.JobLoading_Progressbar})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1036, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1381, 26)
         Me.ToolStrip1.TabIndex = 0
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -107,56 +109,64 @@ Partial Class JobInfoForm
         Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
         Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
-        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(51, 22)
+        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(58, 23)
         Me.ToolStripDropDownButton1.Text = "Menu"
         '
         'HomeToolStripMenuItem
         '
         Me.HomeToolStripMenuItem.Name = "HomeToolStripMenuItem"
-        Me.HomeToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.HomeToolStripMenuItem.Size = New System.Drawing.Size(190, 24)
         Me.HomeToolStripMenuItem.Text = "Home (Start Over)"
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(190, 24)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'BackToolStripMenuItem
         '
         Me.BackToolStripMenuItem.Name = "BackToolStripMenuItem"
-        Me.BackToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.BackToolStripMenuItem.Size = New System.Drawing.Size(190, 24)
         Me.BackToolStripMenuItem.Text = "Back"
         '
         'PartSearchToolStripMenuItem
         '
         Me.PartSearchToolStripMenuItem.Name = "PartSearchToolStripMenuItem"
-        Me.PartSearchToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.PartSearchToolStripMenuItem.Size = New System.Drawing.Size(190, 24)
         Me.PartSearchToolStripMenuItem.Text = "Part Search"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 26)
         '
         'JobNoLabel
         '
         Me.JobNoLabel.Name = "JobNoLabel"
-        Me.JobNoLabel.Size = New System.Drawing.Size(50, 22)
+        Me.JobNoLabel.Size = New System.Drawing.Size(59, 23)
         Me.JobNoLabel.Text = "Job No: "
         '
         'ToolStripComboBox1
         '
         Me.ToolStripComboBox1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolStripComboBox1.Name = "ToolStripComboBox1"
-        Me.ToolStripComboBox1.Size = New System.Drawing.Size(121, 25)
+        Me.ToolStripComboBox1.Size = New System.Drawing.Size(160, 26)
         '
         'ToolStripLabel1
         '
         Me.ToolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(38, 22)
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(45, 23)
         Me.ToolStripLabel1.Text = "Print: "
+        '
+        'JobLoading_Progressbar
+        '
+        Me.JobLoading_Progressbar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.JobLoading_Progressbar.Name = "JobLoading_Progressbar"
+        Me.JobLoading_Progressbar.Size = New System.Drawing.Size(100, 25)
+        Me.JobLoading_Progressbar.Style = System.Windows.Forms.ProgressBarStyle.Marquee
+        Me.JobLoading_Progressbar.Visible = False
         '
         'ReleaseTabControl1
         '
@@ -166,9 +176,10 @@ Partial Class JobInfoForm
         Me.ReleaseTabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ReleaseTabControl1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ReleaseTabControl1.Location = New System.Drawing.Point(0, 0)
+        Me.ReleaseTabControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.ReleaseTabControl1.Name = "ReleaseTabControl1"
         Me.ReleaseTabControl1.SelectedIndex = 0
-        Me.ReleaseTabControl1.Size = New System.Drawing.Size(608, 350)
+        Me.ReleaseTabControl1.Size = New System.Drawing.Size(810, 433)
         Me.ReleaseTabControl1.TabIndex = 79
         '
         'JobInfoPage
@@ -190,9 +201,10 @@ Partial Class JobInfoForm
         Me.JobInfoPage.Controls.Add(Me.Label5)
         Me.JobInfoPage.Controls.Add(Me.Label12)
         Me.JobInfoPage.Location = New System.Drawing.Point(4, 30)
+        Me.JobInfoPage.Margin = New System.Windows.Forms.Padding(4)
         Me.JobInfoPage.Name = "JobInfoPage"
-        Me.JobInfoPage.Padding = New System.Windows.Forms.Padding(3)
-        Me.JobInfoPage.Size = New System.Drawing.Size(600, 316)
+        Me.JobInfoPage.Padding = New System.Windows.Forms.Padding(4)
+        Me.JobInfoPage.Size = New System.Drawing.Size(802, 399)
         Me.JobInfoPage.TabIndex = 0
         Me.JobInfoPage.Text = "Job Info"
         Me.JobInfoPage.UseVisualStyleBackColor = True
@@ -201,7 +213,8 @@ Partial Class JobInfoForm
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(327, 59)
+        Me.Label3.Location = New System.Drawing.Point(436, 73)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(80, 17)
         Me.Label3.TabIndex = 89
@@ -211,79 +224,78 @@ Partial Class JobInfoForm
         '
         Me.makeqty_textbox.BackColor = System.Drawing.SystemColors.ControlLight
         Me.makeqty_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.makeqty_textbox.Location = New System.Drawing.Point(330, 80)
-        Me.makeqty_textbox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.makeqty_textbox.Location = New System.Drawing.Point(440, 98)
+        Me.makeqty_textbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.makeqty_textbox.Name = "makeqty_textbox"
         Me.makeqty_textbox.ReadOnly = True
-        Me.makeqty_textbox.Size = New System.Drawing.Size(102, 25)
+        Me.makeqty_textbox.Size = New System.Drawing.Size(135, 25)
         Me.makeqty_textbox.TabIndex = 88
         '
         'orderqty_textbox
         '
         Me.orderqty_textbox.BackColor = System.Drawing.SystemColors.ControlLight
         Me.orderqty_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.orderqty_textbox.Location = New System.Drawing.Point(330, 30)
-        Me.orderqty_textbox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.orderqty_textbox.Location = New System.Drawing.Point(440, 37)
+        Me.orderqty_textbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.orderqty_textbox.Name = "orderqty_textbox"
         Me.orderqty_textbox.ReadOnly = True
-        Me.orderqty_textbox.Size = New System.Drawing.Size(102, 25)
+        Me.orderqty_textbox.Size = New System.Drawing.Size(135, 25)
         Me.orderqty_textbox.TabIndex = 84
         '
         'dwgno_textbox
         '
         Me.dwgno_textbox.BackColor = System.Drawing.SystemColors.ControlLight
         Me.dwgno_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dwgno_textbox.Location = New System.Drawing.Point(5, 80)
-        Me.dwgno_textbox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.dwgno_textbox.Location = New System.Drawing.Point(7, 98)
+        Me.dwgno_textbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dwgno_textbox.Name = "dwgno_textbox"
         Me.dwgno_textbox.ReadOnly = True
-        Me.dwgno_textbox.Size = New System.Drawing.Size(140, 25)
+        Me.dwgno_textbox.Size = New System.Drawing.Size(185, 25)
         Me.dwgno_textbox.TabIndex = 82
         '
         'Jobnote_textbox
         '
         Me.Jobnote_textbox.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.Jobnote_textbox.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Jobnote_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Jobnote_textbox.Location = New System.Drawing.Point(3, 212)
-        Me.Jobnote_textbox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Jobnote_textbox.Location = New System.Drawing.Point(4, 261)
+        Me.Jobnote_textbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Jobnote_textbox.Multiline = True
         Me.Jobnote_textbox.Name = "Jobnote_textbox"
         Me.Jobnote_textbox.ReadOnly = True
-        Me.Jobnote_textbox.Size = New System.Drawing.Size(594, 101)
+        Me.Jobnote_textbox.Size = New System.Drawing.Size(791, 123)
         Me.Jobnote_textbox.TabIndex = 73
         '
         'altpartNo_textbox
         '
         Me.altpartNo_textbox.BackColor = System.Drawing.SystemColors.ControlLight
         Me.altpartNo_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.altpartNo_textbox.Location = New System.Drawing.Point(149, 80)
-        Me.altpartNo_textbox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.altpartNo_textbox.Location = New System.Drawing.Point(199, 98)
+        Me.altpartNo_textbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.altpartNo_textbox.Name = "altpartNo_textbox"
         Me.altpartNo_textbox.ReadOnly = True
-        Me.altpartNo_textbox.Size = New System.Drawing.Size(147, 25)
+        Me.altpartNo_textbox.Size = New System.Drawing.Size(195, 25)
         Me.altpartNo_textbox.TabIndex = 79
         '
         'Revision_textbox
         '
         Me.Revision_textbox.BackColor = System.Drawing.SystemColors.ControlLight
         Me.Revision_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Revision_textbox.Location = New System.Drawing.Point(149, 30)
-        Me.Revision_textbox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Revision_textbox.Location = New System.Drawing.Point(199, 37)
+        Me.Revision_textbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Revision_textbox.Name = "Revision_textbox"
         Me.Revision_textbox.ReadOnly = True
-        Me.Revision_textbox.Size = New System.Drawing.Size(81, 25)
+        Me.Revision_textbox.Size = New System.Drawing.Size(107, 25)
         Me.Revision_textbox.TabIndex = 77
         '
         'partno_textbox
         '
         Me.partno_textbox.BackColor = System.Drawing.SystemColors.ControlLight
         Me.partno_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.partno_textbox.Location = New System.Drawing.Point(6, 30)
-        Me.partno_textbox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.partno_textbox.Location = New System.Drawing.Point(8, 37)
+        Me.partno_textbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.partno_textbox.Name = "partno_textbox"
         Me.partno_textbox.ReadOnly = True
-        Me.partno_textbox.Size = New System.Drawing.Size(140, 25)
+        Me.partno_textbox.Size = New System.Drawing.Size(185, 25)
         Me.partno_textbox.TabIndex = 41
         '
         'partdescription_textbox
@@ -292,19 +304,20 @@ Partial Class JobInfoForm
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.partdescription_textbox.BackColor = System.Drawing.SystemColors.ControlLight
         Me.partdescription_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.partdescription_textbox.Location = New System.Drawing.Point(3, 130)
-        Me.partdescription_textbox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.partdescription_textbox.Location = New System.Drawing.Point(4, 160)
+        Me.partdescription_textbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.partdescription_textbox.Multiline = True
         Me.partdescription_textbox.Name = "partdescription_textbox"
         Me.partdescription_textbox.ReadOnly = True
-        Me.partdescription_textbox.Size = New System.Drawing.Size(594, 57)
+        Me.partdescription_textbox.Size = New System.Drawing.Size(790, 69)
         Me.partdescription_textbox.TabIndex = 75
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(327, 9)
+        Me.Label1.Location = New System.Drawing.Point(436, 11)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(67, 17)
         Me.Label1.TabIndex = 85
@@ -314,7 +327,8 @@ Partial Class JobInfoForm
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(5, 59)
+        Me.Label4.Location = New System.Drawing.Point(7, 73)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(59, 17)
         Me.Label4.TabIndex = 83
@@ -324,7 +338,8 @@ Partial Class JobInfoForm
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(146, 59)
+        Me.Label13.Location = New System.Drawing.Point(195, 73)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(112, 17)
         Me.Label13.TabIndex = 80
@@ -334,7 +349,8 @@ Partial Class JobInfoForm
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(146, 13)
+        Me.Label10.Location = New System.Drawing.Point(195, 16)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(56, 17)
         Me.Label10.TabIndex = 78
@@ -344,7 +360,8 @@ Partial Class JobInfoForm
         '
         Me.PartNo_label.AutoSize = True
         Me.PartNo_label.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PartNo_label.Location = New System.Drawing.Point(5, 13)
+        Me.PartNo_label.Location = New System.Drawing.Point(7, 16)
+        Me.PartNo_label.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.PartNo_label.Name = "PartNo_label"
         Me.PartNo_label.Size = New System.Drawing.Size(56, 17)
         Me.PartNo_label.TabIndex = 42
@@ -356,7 +373,8 @@ Partial Class JobInfoForm
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(2, 109)
+        Me.Label5.Location = New System.Drawing.Point(3, 134)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(101, 17)
         Me.Label5.TabIndex = 76
@@ -366,7 +384,8 @@ Partial Class JobInfoForm
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(5, 191)
+        Me.Label12.Location = New System.Drawing.Point(7, 235)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(43, 17)
         Me.Label12.TabIndex = 74
@@ -376,9 +395,10 @@ Partial Class JobInfoForm
         '
         Me.ReleasesPage.Controls.Add(Me.Release_treeview)
         Me.ReleasesPage.Location = New System.Drawing.Point(4, 30)
+        Me.ReleasesPage.Margin = New System.Windows.Forms.Padding(4)
         Me.ReleasesPage.Name = "ReleasesPage"
-        Me.ReleasesPage.Padding = New System.Windows.Forms.Padding(3)
-        Me.ReleasesPage.Size = New System.Drawing.Size(600, 316)
+        Me.ReleasesPage.Padding = New System.Windows.Forms.Padding(4)
+        Me.ReleasesPage.Size = New System.Drawing.Size(802, 398)
         Me.ReleasesPage.TabIndex = 1
         Me.ReleasesPage.Text = "Releases"
         Me.ReleasesPage.UseVisualStyleBackColor = True
@@ -387,9 +407,10 @@ Partial Class JobInfoForm
         '
         Me.Release_treeview.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Release_treeview.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Release_treeview.Location = New System.Drawing.Point(3, 3)
+        Me.Release_treeview.Location = New System.Drawing.Point(4, 4)
+        Me.Release_treeview.Margin = New System.Windows.Forms.Padding(4)
         Me.Release_treeview.Name = "Release_treeview"
-        Me.Release_treeview.Size = New System.Drawing.Size(594, 310)
+        Me.Release_treeview.Size = New System.Drawing.Size(794, 390)
         Me.Release_treeview.TabIndex = 0
         '
         'OrderDocTab
@@ -397,8 +418,9 @@ Partial Class JobInfoForm
         Me.OrderDocTab.Controls.Add(Me.ToolStrip3)
         Me.OrderDocTab.Controls.Add(Me.OrderDocs)
         Me.OrderDocTab.Location = New System.Drawing.Point(4, 30)
+        Me.OrderDocTab.Margin = New System.Windows.Forms.Padding(4)
         Me.OrderDocTab.Name = "OrderDocTab"
-        Me.OrderDocTab.Size = New System.Drawing.Size(600, 316)
+        Me.OrderDocTab.Size = New System.Drawing.Size(802, 398)
         Me.OrderDocTab.TabIndex = 2
         Me.OrderDocTab.Text = "Order Documents"
         Me.OrderDocTab.UseVisualStyleBackColor = True
@@ -408,7 +430,7 @@ Partial Class JobInfoForm
         Me.ToolStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton5, Me.ToolStripButton3, Me.ToolStripButton2})
         Me.ToolStrip3.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip3.Name = "ToolStrip3"
-        Me.ToolStrip3.Size = New System.Drawing.Size(600, 25)
+        Me.ToolStrip3.Size = New System.Drawing.Size(802, 25)
         Me.ToolStrip3.TabIndex = 1
         Me.ToolStrip3.Text = "ToolStrip3"
         '
@@ -443,15 +465,17 @@ Partial Class JobInfoForm
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OrderDocs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.OrderDocs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.OrderDocs.Location = New System.Drawing.Point(3, 28)
+        Me.OrderDocs.Location = New System.Drawing.Point(4, 34)
+        Me.OrderDocs.Margin = New System.Windows.Forms.Padding(4)
         Me.OrderDocs.Name = "OrderDocs"
-        Me.OrderDocs.Size = New System.Drawing.Size(594, 233)
+        Me.OrderDocs.Size = New System.Drawing.Size(791, 288)
         Me.OrderDocs.TabIndex = 0
         '
         'SplitContainer1
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.Location = New System.Drawing.Point(0, 25)
+        Me.SplitContainer1.Location = New System.Drawing.Point(0, 26)
+        Me.SplitContainer1.Margin = New System.Windows.Forms.Padding(4)
         Me.SplitContainer1.Name = "SplitContainer1"
         '
         'SplitContainer1.Panel1
@@ -461,8 +485,9 @@ Partial Class JobInfoForm
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.AxAcroPDF1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1036, 531)
-        Me.SplitContainer1.SplitterDistance = 608
+        Me.SplitContainer1.Size = New System.Drawing.Size(1381, 658)
+        Me.SplitContainer1.SplitterDistance = 810
+        Me.SplitContainer1.SplitterWidth = 5
         Me.SplitContainer1.TabIndex = 80
         '
         'SplitContainer2
@@ -470,6 +495,7 @@ Partial Class JobInfoForm
         Me.SplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainer2.IsSplitterFixed = True
         Me.SplitContainer2.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer2.Margin = New System.Windows.Forms.Padding(4)
         Me.SplitContainer2.Name = "SplitContainer2"
         Me.SplitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
@@ -480,8 +506,9 @@ Partial Class JobInfoForm
         'SplitContainer2.Panel2
         '
         Me.SplitContainer2.Panel2.Controls.Add(Me.RoutingDataGridView)
-        Me.SplitContainer2.Size = New System.Drawing.Size(608, 531)
-        Me.SplitContainer2.SplitterDistance = 350
+        Me.SplitContainer2.Size = New System.Drawing.Size(810, 658)
+        Me.SplitContainer2.SplitterDistance = 433
+        Me.SplitContainer2.SplitterWidth = 5
         Me.SplitContainer2.TabIndex = 90
         '
         'RoutingDataGridView
@@ -495,84 +522,88 @@ Partial Class JobInfoForm
         Me.RoutingDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column3, Me.Column2, Me.Column4, Me.Column5, Me.Column6, Me.TimeUnit, Me.Column7, Me.Column8})
         Me.RoutingDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RoutingDataGridView.Location = New System.Drawing.Point(0, 0)
+        Me.RoutingDataGridView.Margin = New System.Windows.Forms.Padding(4)
         Me.RoutingDataGridView.MultiSelect = False
         Me.RoutingDataGridView.Name = "RoutingDataGridView"
         Me.RoutingDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.RoutingDataGridView.Size = New System.Drawing.Size(608, 177)
+        Me.RoutingDataGridView.Size = New System.Drawing.Size(810, 220)
         Me.RoutingDataGridView.TabIndex = 3
         '
         'Column1
         '
         Me.Column1.HeaderText = "Step No"
         Me.Column1.Name = "Column1"
-        Me.Column1.Width = 66
+        Me.Column1.Width = 78
         '
         'Column3
         '
         Me.Column3.HeaderText = "Vendor Code"
         Me.Column3.Name = "Column3"
-        Me.Column3.Width = 87
+        Me.Column3.Width = 106
         '
         'Column2
         '
         Me.Column2.HeaderText = "Work Center"
         Me.Column2.Name = "Column2"
-        Me.Column2.Width = 85
+        Me.Column2.Width = 103
         '
         'Column4
         '
         Me.Column4.HeaderText = "Operation Code"
         Me.Column4.Name = "Column4"
-        Me.Column4.Width = 97
+        Me.Column4.Width = 122
         '
         'Column5
         '
         Me.Column5.HeaderText = "Description"
         Me.Column5.Name = "Column5"
-        Me.Column5.Width = 85
+        Me.Column5.Width = 104
         '
         'Column6
         '
         Me.Column6.HeaderText = "Setup Time"
         Me.Column6.Name = "Column6"
-        Me.Column6.Width = 79
+        Me.Column6.Width = 96
         '
         'TimeUnit
         '
         Me.TimeUnit.DataPropertyName = "TimeUnit"
         Me.TimeUnit.HeaderText = "TimeUnit"
         Me.TimeUnit.Name = "TimeUnit"
-        Me.TimeUnit.Width = 74
+        Me.TimeUnit.Width = 89
         '
         'Column7
         '
         Me.Column7.HeaderText = "Cycle Time"
         Me.Column7.Name = "Column7"
-        Me.Column7.Width = 78
+        Me.Column7.Width = 94
         '
         'Column8
         '
         Me.Column8.HeaderText = "Cycle Unit"
         Me.Column8.Name = "Column8"
-        Me.Column8.Width = 74
+        Me.Column8.Width = 88
         '
         'AxAcroPDF1
         '
         Me.AxAcroPDF1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.AxAcroPDF1.Enabled = True
         Me.AxAcroPDF1.Location = New System.Drawing.Point(0, 0)
+        Me.AxAcroPDF1.Margin = New System.Windows.Forms.Padding(4)
         Me.AxAcroPDF1.Name = "AxAcroPDF1"
         Me.AxAcroPDF1.OcxState = CType(resources.GetObject("AxAcroPDF1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxAcroPDF1.Size = New System.Drawing.Size(424, 531)
+        Me.AxAcroPDF1.Size = New System.Drawing.Size(566, 658)
         Me.AxAcroPDF1.TabIndex = 0
         '
         'JobInfoForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1036, 556)
+        Me.ClientSize = New System.Drawing.Size(1381, 684)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.ToolStrip1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "JobInfoForm"
         Me.Text = "Job No: "
         Me.ToolStrip1.ResumeLayout(False)
@@ -651,4 +682,5 @@ Partial Class JobInfoForm
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
     Friend WithEvents AxAcroPDF1 As AxAcroPDFLib.AxAcroPDF
+    Friend WithEvents JobLoading_Progressbar As ToolStripProgressBar
 End Class

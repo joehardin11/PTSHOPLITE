@@ -53,7 +53,21 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
-        
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=PTI-SRV\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=True;Co" &
+            "nnect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=Rea" &
+            "dWrite;MultiSubnetFailover=False")>
+        Public Property PartDatabaseString() As String
+            Get
+                Return CType(Me("PartDatabaseString"), String)
+            End Get
+            Set
+                Me("PartDatabaseString") = Value
+            End Set
+        End Property
+
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
