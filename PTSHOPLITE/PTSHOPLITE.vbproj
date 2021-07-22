@@ -127,6 +127,11 @@
     </Compile>
     <Compile Include="PartDatabaseConns.vb" />
     <Compile Include="SchedulingModule.vb" />
+    <Compile Include="SHOPDBDataSetProdReport.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPDBDataSetProdReport.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\ProductionReporting.resx">
@@ -160,6 +165,17 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="SHOPDBDataSetProdReport.xsc">
+      <DependentUpon>SHOPDBDataSetProdReport.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPDBDataSetProdReport.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPDBDataSetProdReport.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPDBDataSetProdReport.xss">
+      <DependentUpon>SHOPDBDataSetProdReport.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AcroPDFLib">
