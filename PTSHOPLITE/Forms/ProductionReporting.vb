@@ -322,13 +322,21 @@ Line1:
     End Sub
 
 
+
     Private Sub ProductionReporting_Load() Handles MyBase.Load
         'TODO: This line of code loads data into the 'SHOPDBDataSetProdReport.ProductionReporting' table. You can move, or remove it, as needed.
         Me.ProductionReportingTableAdapter.Fill(Me.SHOPDBDataSetProdReport.ProductionReporting)
-
     End Sub
+
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
         ProductionReporting_Load()
     End Sub
 
+    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
+        If IsNothing(DataGridView1.CurrentRow) = True Then Exit Sub
+
+        Dim CurrentEntryID = DataGridView1.CurrentRow.Cells(0).Value
+        Dim CurrentEntryDT = GetDTFromString("SELECT * FROM ProductionReporting WHERE Id = '" & CurrentEntryID & "'", False)
+
+    End Sub
 End Class

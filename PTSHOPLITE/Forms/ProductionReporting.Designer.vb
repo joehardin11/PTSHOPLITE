@@ -55,9 +55,6 @@ Partial Class ProductionReporting
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
-        Me.SHOPDBDataSetProdReport = New PTSHOPLITE.SHOPDBDataSetProdReport()
-        Me.ProductionReportingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ProductionReportingTableAdapter = New PTSHOPLITE.SHOPDBDataSetProdReportTableAdapters.ProductionReportingTableAdapter()
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.QtyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PartNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -68,6 +65,9 @@ Partial Class ProductionReporting
         Me.SetupDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ProdDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EntDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProductionReportingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SHOPDBDataSetProdReport = New PTSHOPLITE.SHOPDBDataSetProdReport()
+        Me.ProductionReportingTableAdapter = New PTSHOPLITE.SHOPDBDataSetProdReportTableAdapters.ProductionReportingTableAdapter()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -75,8 +75,8 @@ Partial Class ProductionReporting
         Me.SplitContainer1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
-        CType(Me.SHOPDBDataSetProdReport, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionReportingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SHOPDBDataSetProdReport, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -409,20 +409,6 @@ Partial Class ProductionReporting
         Me.ToolStripButton3.Size = New System.Drawing.Size(76, 24)
         Me.ToolStripButton3.Text = "Edit Entry"
         '
-        'SHOPDBDataSetProdReport
-        '
-        Me.SHOPDBDataSetProdReport.DataSetName = "SHOPDBDataSetProdReport"
-        Me.SHOPDBDataSetProdReport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'ProductionReportingBindingSource
-        '
-        Me.ProductionReportingBindingSource.DataMember = "ProductionReporting"
-        Me.ProductionReportingBindingSource.DataSource = Me.SHOPDBDataSetProdReport
-        '
-        'ProductionReportingTableAdapter
-        '
-        Me.ProductionReportingTableAdapter.ClearBeforeFill = True
-        '
         'IdDataGridViewTextBoxColumn
         '
         Me.IdDataGridViewTextBoxColumn.DataPropertyName = "Id"
@@ -430,7 +416,7 @@ Partial Class ProductionReporting
         Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
         Me.IdDataGridViewTextBoxColumn.ReadOnly = True
         Me.IdDataGridViewTextBoxColumn.Visible = False
-        Me.IdDataGridViewTextBoxColumn.Width = 25
+        Me.IdDataGridViewTextBoxColumn.Width = 22
         '
         'QtyDataGridViewTextBoxColumn
         '
@@ -504,6 +490,20 @@ Partial Class ProductionReporting
         Me.EntDateDataGridViewTextBoxColumn.ReadOnly = True
         Me.EntDateDataGridViewTextBoxColumn.Width = 84
         '
+        'ProductionReportingBindingSource
+        '
+        Me.ProductionReportingBindingSource.DataMember = "ProductionReporting"
+        Me.ProductionReportingBindingSource.DataSource = Me.SHOPDBDataSetProdReport
+        '
+        'SHOPDBDataSetProdReport
+        '
+        Me.SHOPDBDataSetProdReport.DataSetName = "SHOPDBDataSetProdReport"
+        Me.SHOPDBDataSetProdReport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ProductionReportingTableAdapter
+        '
+        Me.ProductionReportingTableAdapter.ClearBeforeFill = True
+        '
         'ProductionReporting
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -523,8 +523,8 @@ Partial Class ProductionReporting
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        CType(Me.SHOPDBDataSetProdReport, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ProductionReportingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SHOPDBDataSetProdReport, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
