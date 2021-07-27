@@ -303,6 +303,8 @@ Partial Public Class SHOPDBDataSetProdReport
         
         Private columnEntDate As Global.System.Data.DataColumn
         
+        Private columnNotes As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -419,6 +421,14 @@ Partial Public Class SHOPDBDataSetProdReport
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property NotesColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNotes
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -455,9 +465,9 @@ Partial Public Class SHOPDBDataSetProdReport
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddProductionReportingRow(ByVal Qty As Integer, ByVal PartNo As String, ByVal JobNo As String, ByVal RoutingStep As String, ByVal Employee As String, ByVal Hours As String, ByVal Setup As Boolean, ByVal ProdDate As Date, ByVal EntDate As Date) As ProductionReportingRow
+        Public Overloads Function AddProductionReportingRow(ByVal Qty As Integer, ByVal PartNo As String, ByVal JobNo As String, ByVal RoutingStep As String, ByVal Employee As String, ByVal Hours As String, ByVal Setup As Boolean, ByVal ProdDate As Date, ByVal EntDate As Date, ByVal Notes As String) As ProductionReportingRow
             Dim rowProductionReportingRow As ProductionReportingRow = CType(Me.NewRow,ProductionReportingRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Qty, PartNo, JobNo, RoutingStep, Employee, Hours, Setup, ProdDate, EntDate}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Qty, PartNo, JobNo, RoutingStep, Employee, Hours, Setup, ProdDate, EntDate, Notes}
             rowProductionReportingRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowProductionReportingRow)
             Return rowProductionReportingRow
@@ -490,6 +500,7 @@ Partial Public Class SHOPDBDataSetProdReport
             Me.columnSetup = MyBase.Columns("Setup")
             Me.columnProdDate = MyBase.Columns("ProdDate")
             Me.columnEntDate = MyBase.Columns("EntDate")
+            Me.columnNotes = MyBase.Columns("Notes")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -515,6 +526,8 @@ Partial Public Class SHOPDBDataSetProdReport
             MyBase.Columns.Add(Me.columnProdDate)
             Me.columnEntDate = New Global.System.Data.DataColumn("EntDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnEntDate)
+            Me.columnNotes = New Global.System.Data.DataColumn("Notes", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNotes)
             Me.columnId.AutoIncrement = true
             Me.columnId.AutoIncrementSeed = -1
             Me.columnId.AutoIncrementStep = -1
@@ -527,6 +540,7 @@ Partial Public Class SHOPDBDataSetProdReport
             Me.columnRoutingStep.MaxLength = 2147483647
             Me.columnEmployee.MaxLength = 10
             Me.columnHours.MaxLength = 10
+            Me.columnNotes.MaxLength = 2147483647
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -811,6 +825,21 @@ Partial Public Class SHOPDBDataSetProdReport
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Notes() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableProductionReporting.NotesColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Notes' in table 'ProductionReporting' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProductionReporting.NotesColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsJobNoNull() As Boolean
             Return Me.IsNull(Me.tableProductionReporting.JobNoColumn)
         End Function
@@ -891,6 +920,18 @@ Partial Public Class SHOPDBDataSetProdReport
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetEntDateNull()
             Me(Me.tableProductionReporting.EntDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsNotesNull() As Boolean
+            Return Me.IsNull(Me.tableProductionReporting.NotesColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetNotesNull()
+            Me(Me.tableProductionReporting.NotesColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1070,12 +1111,13 @@ Namespace SHOPDBDataSetProdReportTableAdapters
             tableMapping.ColumnMappings.Add("Setup", "Setup")
             tableMapping.ColumnMappings.Add("ProdDate", "ProdDate")
             tableMapping.ColumnMappings.Add("EntDate", "EntDate")
+            tableMapping.ColumnMappings.Add("Notes", "Notes")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [ProductionReporting] ([Qty], [PartNo], [JobNo], [RoutingStep], [Empl"& _ 
-                "oyee], [Hours], [Setup], [ProdDate], [EntDate]) VALUES (@Qty, @PartNo, @JobNo, @"& _ 
-                "RoutingStep, @Employee, @Hours, @Setup, @ProdDate, @EntDate)"
+                "oyee], [Hours], [Setup], [ProdDate], [EntDate], [Notes]) VALUES (@Qty, @PartNo, "& _ 
+                "@JobNo, @RoutingStep, @Employee, @Hours, @Setup, @ProdDate, @EntDate, @Notes)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Qty", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Qty", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PartNo", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PartNo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1086,6 +1128,7 @@ Namespace SHOPDBDataSetProdReportTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Setup", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Setup", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ProdDate", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProdDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EntDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EntDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Notes", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notes", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1102,7 +1145,7 @@ Namespace SHOPDBDataSetProdReportTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Id, Qty, PartNo, JobNo, RoutingStep, Employee, Hours, Setup, ProdDa"& _ 
-                "te, EntDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ProductionReporting"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Id DESC"
+                "te, EntDate, Notes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ProductionReporting"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Id DESC"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -1162,7 +1205,7 @@ Namespace SHOPDBDataSetProdReportTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Qty As Integer, ByVal PartNo As String, ByVal JobNo As String, ByVal RoutingStep As String, ByVal Employee As String, ByVal Hours As String, ByVal Setup As Global.System.Nullable(Of Boolean), ByVal ProdDate As Global.System.Nullable(Of Date), ByVal EntDate As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Insert(ByVal Qty As Integer, ByVal PartNo As String, ByVal JobNo As String, ByVal RoutingStep As String, ByVal Employee As String, ByVal Hours As String, ByVal Setup As Global.System.Nullable(Of Boolean), ByVal ProdDate As Global.System.Nullable(Of Date), ByVal EntDate As Global.System.Nullable(Of Date), ByVal Notes As String) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(Qty,Integer)
             If (PartNo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("PartNo")
@@ -1203,6 +1246,11 @@ Namespace SHOPDBDataSetProdReportTableAdapters
                 Me.Adapter.InsertCommand.Parameters(8).Value = CType(EntDate.Value,Date)
             Else
                 Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Notes Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(Notes,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _

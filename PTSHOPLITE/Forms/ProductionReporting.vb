@@ -23,6 +23,7 @@ Public Class ProductionReporting
         Dim HoursInputAsInt = 0
         Dim SetupInput = CheckBox1.Checked
         Dim DateProducedInput = DateTimePicker1.Value.ToShortDateString
+        Dim NotesInput = TextBoxNotes.Text
 
         'check if all boxes are filled out correctly
         If QtyInput = "" Or PartNoInput = "" Or JobNoInput = "" Or RoutingStepInput = "" Or EmployeeInput = "" Or HoursInput = "" Then
@@ -76,7 +77,7 @@ Public Class ProductionReporting
         End If
 
         'sql write statement
-        AddProductionToSql(QtyInputAsInt, PartNoInputAsInt, JobNoInput, RoutingStepInput, EmployeeInputAsInt, HoursInputAsInt, SetupInput, DateProducedInput)
+        AddProductionToSql(QtyInputAsInt, PartNoInputAsInt, JobNoInput, RoutingStepInput, EmployeeInputAsInt, HoursInputAsInt, SetupInput, DateProducedInput, NotesInput)
 
         'clear boxes
         ClearForm()
@@ -192,10 +193,10 @@ Line1:
         End If
     End Sub
 
-    Public Function AddProductionToSql(Qty, PartNo, JobNo, RoutingStep, Employee, Hours, Setup, ProdDate)
+    Public Function AddProductionToSql(Qty, PartNo, JobNo, RoutingStep, Employee, Hours, Setup, ProdDate, Notes)
         Dim sqlconn As New SqlConnection(My.Settings.PartDatabaseString)
-        Dim commtext As String = "INSERT into ProductionReporting (Qty, PartNo, JobNo, RoutingStep, Employee, Hours, Setup, ProdDate, EntDate) " &
-            "VALUES (@Qty, @PartNo, @JobNo, @RoutingStep, @Employee, @Hours, @Setup, @ProdDate, @EntDate); SELECT SCOPE_IDENTITY()"
+        Dim commtext As String = "INSERT into ProductionReporting (Qty, PartNo, JobNo, RoutingStep, Employee, Hours, Setup, ProdDate, EntDate, Notes) " &
+            "VALUES (@Qty, @PartNo, @JobNo, @RoutingStep, @Employee, @Hours, @Setup, @ProdDate, @EntDate, @Notes); SELECT SCOPE_IDENTITY()"
 
         Dim EntDate As Date = DateAndTime.Now
 
@@ -209,6 +210,7 @@ Line1:
         sqlcomm.Parameters.AddWithValue("@Setup", Setup)
         sqlcomm.Parameters.AddWithValue("@ProdDate", ProdDate)
         sqlcomm.Parameters.AddWithValue("@EntDate", EntDate)
+        sqlcomm.Parameters.AddWithValue("@Notes", Notes)
         Dim fileint As Integer = -1
 
         Try
@@ -318,6 +320,7 @@ Line1:
         TextBoxBarcode.Select()
         Label_InvalidJob.Visible = False
         Label_InvalidPart.Visible = False
+        TextBoxNotes.Clear()
 
     End Sub
 
@@ -339,4 +342,5 @@ Line1:
         Dim CurrentEntryDT = GetDTFromString("SELECT * FROM ProductionReporting WHERE Id = '" & CurrentEntryID & "'", False)
 
     End Sub
+
 End Class

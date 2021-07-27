@@ -27,6 +27,8 @@ Partial Class ProductionReporting
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.TextBoxNotes = New System.Windows.Forms.TextBox()
         Me.Label_InvalidPart = New System.Windows.Forms.Label()
         Me.Label_InvalidJob = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -55,6 +57,9 @@ Partial Class ProductionReporting
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ProductionReportingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SHOPDBDataSetProdReport = New PTSHOPLITE.SHOPDBDataSetProdReport()
+        Me.ProductionReportingTableAdapter = New PTSHOPLITE.SHOPDBDataSetProdReportTableAdapters.ProductionReportingTableAdapter()
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.QtyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PartNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -64,10 +69,8 @@ Partial Class ProductionReporting
         Me.HoursDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SetupDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ProdDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EntDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProductionReportingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SHOPDBDataSetProdReport = New PTSHOPLITE.SHOPDBDataSetProdReport()
-        Me.ProductionReportingTableAdapter = New PTSHOPLITE.SHOPDBDataSetProdReportTableAdapters.ProductionReportingTableAdapter()
+        Me.EntDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Notes = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -104,6 +107,8 @@ Partial Class ProductionReporting
         '
         'SplitContainer1.Panel2
         '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.Label11)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.TextBoxNotes)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label_InvalidPart)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label_InvalidJob)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label10)
@@ -138,7 +143,7 @@ Partial Class ProductionReporting
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.QtyDataGridViewTextBoxColumn, Me.PartNoDataGridViewTextBoxColumn, Me.JobNoDataGridViewTextBoxColumn, Me.RoutingStepDataGridViewTextBoxColumn, Me.EmployeeDataGridViewTextBoxColumn, Me.HoursDataGridViewTextBoxColumn, Me.SetupDataGridViewCheckBoxColumn, Me.ProdDateDataGridViewTextBoxColumn, Me.EntDateDataGridViewTextBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.QtyDataGridViewTextBoxColumn, Me.PartNoDataGridViewTextBoxColumn, Me.JobNoDataGridViewTextBoxColumn, Me.RoutingStepDataGridViewTextBoxColumn, Me.EmployeeDataGridViewTextBoxColumn, Me.HoursDataGridViewTextBoxColumn, Me.SetupDataGridViewCheckBoxColumn, Me.ProdDateDataGridViewTextBoxColumn, Me.EntDate, Me.Notes})
         Me.DataGridView1.DataSource = Me.ProductionReportingBindingSource
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
@@ -148,6 +153,25 @@ Partial Class ProductionReporting
         Me.DataGridView1.Size = New System.Drawing.Size(400, 553)
         Me.DataGridView1.TabIndex = 0
         Me.DataGridView1.TabStop = False
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(29, 416)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(60, 17)
+        Me.Label11.TabIndex = 23
+        Me.Label11.Text = "NOTES:"
+        '
+        'TextBoxNotes
+        '
+        Me.TextBoxNotes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxNotes.Location = New System.Drawing.Point(32, 436)
+        Me.TextBoxNotes.Multiline = True
+        Me.TextBoxNotes.Name = "TextBoxNotes"
+        Me.TextBoxNotes.Size = New System.Drawing.Size(527, 78)
+        Me.TextBoxNotes.TabIndex = 22
         '
         'Label_InvalidPart
         '
@@ -409,6 +433,20 @@ Partial Class ProductionReporting
         Me.ToolStripButton3.Size = New System.Drawing.Size(76, 24)
         Me.ToolStripButton3.Text = "Edit Entry"
         '
+        'ProductionReportingBindingSource
+        '
+        Me.ProductionReportingBindingSource.DataMember = "ProductionReporting"
+        Me.ProductionReportingBindingSource.DataSource = Me.SHOPDBDataSetProdReport
+        '
+        'SHOPDBDataSetProdReport
+        '
+        Me.SHOPDBDataSetProdReport.DataSetName = "SHOPDBDataSetProdReport"
+        Me.SHOPDBDataSetProdReport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ProductionReportingTableAdapter
+        '
+        Me.ProductionReportingTableAdapter.ClearBeforeFill = True
+        '
         'IdDataGridViewTextBoxColumn
         '
         Me.IdDataGridViewTextBoxColumn.DataPropertyName = "Id"
@@ -416,7 +454,7 @@ Partial Class ProductionReporting
         Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
         Me.IdDataGridViewTextBoxColumn.ReadOnly = True
         Me.IdDataGridViewTextBoxColumn.Visible = False
-        Me.IdDataGridViewTextBoxColumn.Width = 22
+        Me.IdDataGridViewTextBoxColumn.Width = 25
         '
         'QtyDataGridViewTextBoxColumn
         '
@@ -482,27 +520,21 @@ Partial Class ProductionReporting
         Me.ProdDateDataGridViewTextBoxColumn.ReadOnly = True
         Me.ProdDateDataGridViewTextBoxColumn.Width = 93
         '
-        'EntDateDataGridViewTextBoxColumn
+        'EntDate
         '
-        Me.EntDateDataGridViewTextBoxColumn.DataPropertyName = "EntDate"
-        Me.EntDateDataGridViewTextBoxColumn.HeaderText = "EntDate"
-        Me.EntDateDataGridViewTextBoxColumn.Name = "EntDateDataGridViewTextBoxColumn"
-        Me.EntDateDataGridViewTextBoxColumn.ReadOnly = True
-        Me.EntDateDataGridViewTextBoxColumn.Width = 84
+        Me.EntDate.DataPropertyName = "EntDate"
+        Me.EntDate.HeaderText = "EntDate"
+        Me.EntDate.Name = "EntDate"
+        Me.EntDate.ReadOnly = True
+        Me.EntDate.Width = 84
         '
-        'ProductionReportingBindingSource
+        'Notes
         '
-        Me.ProductionReportingBindingSource.DataMember = "ProductionReporting"
-        Me.ProductionReportingBindingSource.DataSource = Me.SHOPDBDataSetProdReport
-        '
-        'SHOPDBDataSetProdReport
-        '
-        Me.SHOPDBDataSetProdReport.DataSetName = "SHOPDBDataSetProdReport"
-        Me.SHOPDBDataSetProdReport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'ProductionReportingTableAdapter
-        '
-        Me.ProductionReportingTableAdapter.ClearBeforeFill = True
+        Me.Notes.DataPropertyName = "Notes"
+        Me.Notes.HeaderText = "Notes"
+        Me.Notes.Name = "Notes"
+        Me.Notes.ReadOnly = True
+        Me.Notes.Width = 70
         '
         'ProductionReporting
         '
@@ -564,6 +596,8 @@ Partial Class ProductionReporting
     Friend WithEvents SHOPDBDataSetProdReport As SHOPDBDataSetProdReport
     Friend WithEvents ProductionReportingBindingSource As BindingSource
     Friend WithEvents ProductionReportingTableAdapter As SHOPDBDataSetProdReportTableAdapters.ProductionReportingTableAdapter
+    Friend WithEvents Label11 As Label
+    Friend WithEvents TextBoxNotes As TextBox
     Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents QtyDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PartNoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -573,5 +607,6 @@ Partial Class ProductionReporting
     Friend WithEvents HoursDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SetupDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
     Friend WithEvents ProdDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents EntDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EntDate As DataGridViewTextBoxColumn
+    Friend WithEvents Notes As DataGridViewTextBoxColumn
 End Class
