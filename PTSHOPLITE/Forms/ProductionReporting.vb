@@ -395,6 +395,8 @@ Line1:
         DateTimePicker1.Value = CurrentEntryDT.Rows(0).Item(8)
         If IsDBNull(CurrentEntryDT.Rows(0).Item(10)) = False Then
             TextBoxNotes.Text = CurrentEntryDT.Rows(0).Item(10).ToString
+        Else
+            TextBoxNotes.Text = ""
         End If
 
         IDIndex = CurrentEntryDT.Rows(0).Item(0)
