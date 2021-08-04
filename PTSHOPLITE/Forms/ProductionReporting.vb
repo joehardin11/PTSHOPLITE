@@ -9,8 +9,8 @@ Public Class ProductionReporting
     'Dim HoursInput As String
     'Dim SetupInput As Boolean
     'Dim DateProducedInput As String
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Dim IDIndex As Integer
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click, ButtonUpdate.Click
         Dim QtyInput = TextBoxQty.Text
         Dim QtyInputAsInt = 0
         Dim PartNoInput = TextBoxPartNo.Text
@@ -77,11 +77,21 @@ Public Class ProductionReporting
         End If
 
         'sql write statement
-        AddProductionToSql(QtyInputAsInt, PartNoInputAsInt, JobNoInput, RoutingStepInput, EmployeeInputAsInt, HoursInputAsInt, SetupInput, DateProducedInput, NotesInput)
+        If Button1.Visible = True Then
+            AddProductionToSql(QtyInputAsInt, PartNoInputAsInt, JobNoInput, RoutingStepInput, EmployeeInputAsInt, HoursInputAsInt, SetupInput, DateProducedInput, NotesInput)
+        End If
+
+        If ButtonUpdate.Visible = True Then
+            UpdateProductionToSql(QtyInputAsInt, PartNoInputAsInt, JobNoInput, RoutingStepInput, EmployeeInputAsInt, HoursInputAsInt, SetupInput, DateProducedInput, NotesInput, IDIndex)
+        End If
 
         'clear boxes
         ClearForm()
         ProductionReporting_Load()
+
+        Button1.Visible = True
+        ButtonUpdate.Visible = False
+        ButtonCancel.Visible = False
 
 Line1:
     End Sub
@@ -226,6 +236,36 @@ Line1:
 
     End Function
 
+    Public Function UpdateProductionToSql(Qty, PartNo, JobNo, RoutingStep, Employee, Hours, Setup, ProdDate, Notes, Id)
+        Dim sqlconn As New SqlConnection(My.Settings.PartDatabaseString)
+        Dim commText As String = "UPDATE ProductionReporting SET Qty = @Qty, PartNo = @PartNo, JobNo = @JobNo, RoutingStep = @RoutingStep, Employee = @Employee, Hours = @Hours, Setup = @Setup, ProdDate = @ProdDate, Notes = @Notes WHERE (Id = @Id)"
+
+
+        Dim SqlComm As New SqlCommand(commText, sqlconn)
+        SqlComm.Parameters.AddWithValue("@Qty", Qty)
+        SqlComm.Parameters.AddWithValue("@PartNo", PartNo)
+        SqlComm.Parameters.AddWithValue("@JobNo", JobNo)
+        SqlComm.Parameters.AddWithValue("@RoutingStep", RoutingStep)
+        SqlComm.Parameters.AddWithValue("@Employee", Employee)
+        SqlComm.Parameters.AddWithValue("@Hours", Hours)
+        SqlComm.Parameters.AddWithValue("@Setup", Setup)
+        SqlComm.Parameters.AddWithValue("@ProdDate", ProdDate)
+        SqlComm.Parameters.AddWithValue("@Notes", Notes)
+        SqlComm.Parameters.AddWithValue("@Id", Id)
+        Dim fileint As Integer = -1
+
+        Try
+            sqlconn.Open()
+            fileint = SqlComm.ExecuteScalar
+            sqlconn.Close()
+        Catch ex As System.Exception
+            MsgBox("Document Entry Error: " & ex.Message)
+        End Try
+
+        Return fileint
+
+    End Function
+
     Private Sub TextBoxJobNo_Leave(sender As Object, e As EventArgs) Handles TextBoxJobNo.Leave
         Dim CurrentPartNo As String
 
@@ -335,12 +375,48 @@ Line1:
         ProductionReporting_Load()
     End Sub
 
+
     Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
         If IsNothing(DataGridView1.CurrentRow) = True Then Exit Sub
+        Button1.Visible = False
+        ButtonUpdate.Visible = True
+        ButtonCancel.Visible = True
 
         Dim CurrentEntryID = DataGridView1.CurrentRow.Cells(0).Value
         Dim CurrentEntryDT = GetDTFromString("SELECT * FROM ProductionReporting WHERE Id = '" & CurrentEntryID & "'", False)
 
+        TextBoxQty.Text = CurrentEntryDT.Rows(0).Item(1)
+        TextBoxHours.Text = CurrentEntryDT.Rows(0).Item(6)
+        TextBoxJobNo.Text = CurrentEntryDT.Rows(0).Item(3)
+        TextBoxEmployeeNo.Text = CurrentEntryDT.Rows(0).Item(5)
+        ComboBoxRoutingStep.Text = CurrentEntryDT.Rows(0).Item(4)
+        TextBoxPartNo.Text = CurrentEntryDT.Rows(0).Item(2)
+        CheckBox1.Checked = CurrentEntryDT.Rows(0).Item(7)
+        DateTimePicker1.Value = CurrentEntryDT.Rows(0).Item(8)
+        If IsDBNull(CurrentEntryDT.Rows(0).Item(10)) = False Then
+            TextBoxNotes.Text = CurrentEntryDT.Rows(0).Item(10).ToString
+        End If
+
+        IDIndex = CurrentEntryDT.Rows(0).Item(0)
+
     End Sub
+
+    Private Sub ButtonCancel_Click(sender As Object, e As EventArgs) Handles ButtonCancel.Click
+        TextBoxQty.Clear()
+        TextBoxHours.Clear()
+        TextBoxJobNo.Clear()
+        TextBoxEmployeeNo.Clear()
+        ComboBoxRoutingStep.Text = ""
+        TextBoxPartNo.Clear()
+        CheckBox1.Checked = False
+        DateTimePicker1.Value = Today
+        TextBoxNotes.Text = ""
+
+        Button1.Visible = True
+        ButtonCancel.Visible = False
+        ButtonUpdate.Visible = False
+
+    End Sub
+
 
 End Class

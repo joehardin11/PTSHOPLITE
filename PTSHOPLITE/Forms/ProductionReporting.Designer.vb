@@ -27,6 +27,19 @@ Partial Class ProductionReporting
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.QtyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PartNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.JobNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RoutingStepDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmployeeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HoursDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SetupDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ProdDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EntDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Notes = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProductionReportingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SHOPDBDataSetProdReport = New PTSHOPLITE.SHOPDBDataSetProdReport()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TextBoxNotes = New System.Windows.Forms.TextBox()
         Me.Label_InvalidPart = New System.Windows.Forms.Label()
@@ -57,29 +70,18 @@ Partial Class ProductionReporting
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
-        Me.ProductionReportingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SHOPDBDataSetProdReport = New PTSHOPLITE.SHOPDBDataSetProdReport()
         Me.ProductionReportingTableAdapter = New PTSHOPLITE.SHOPDBDataSetProdReportTableAdapters.ProductionReportingTableAdapter()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.QtyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PartNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.JobNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RoutingStepDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmployeeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HoursDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SetupDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ProdDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EntDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Notes = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ButtonUpdate = New System.Windows.Forms.Button()
+        Me.ButtonCancel = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ToolStrip1.SuspendLayout()
         CType(Me.ProductionReportingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SHOPDBDataSetProdReport, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -107,6 +109,8 @@ Partial Class ProductionReporting
         '
         'SplitContainer1.Panel2
         '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.ButtonCancel)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.ButtonUpdate)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label11)
         Me.SplitContainer1.Panel2.Controls.Add(Me.TextBoxNotes)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label_InvalidPart)
@@ -153,6 +157,105 @@ Partial Class ProductionReporting
         Me.DataGridView1.Size = New System.Drawing.Size(400, 553)
         Me.DataGridView1.TabIndex = 0
         Me.DataGridView1.TabStop = False
+        '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "Id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "Id"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdDataGridViewTextBoxColumn.Visible = False
+        Me.IdDataGridViewTextBoxColumn.Width = 25
+        '
+        'QtyDataGridViewTextBoxColumn
+        '
+        Me.QtyDataGridViewTextBoxColumn.DataPropertyName = "Qty"
+        Me.QtyDataGridViewTextBoxColumn.HeaderText = "Qty"
+        Me.QtyDataGridViewTextBoxColumn.Name = "QtyDataGridViewTextBoxColumn"
+        Me.QtyDataGridViewTextBoxColumn.ReadOnly = True
+        Me.QtyDataGridViewTextBoxColumn.Width = 55
+        '
+        'PartNoDataGridViewTextBoxColumn
+        '
+        Me.PartNoDataGridViewTextBoxColumn.DataPropertyName = "PartNo"
+        Me.PartNoDataGridViewTextBoxColumn.HeaderText = "PartNo"
+        Me.PartNoDataGridViewTextBoxColumn.Name = "PartNoDataGridViewTextBoxColumn"
+        Me.PartNoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PartNoDataGridViewTextBoxColumn.Width = 77
+        '
+        'JobNoDataGridViewTextBoxColumn
+        '
+        Me.JobNoDataGridViewTextBoxColumn.DataPropertyName = "JobNo"
+        Me.JobNoDataGridViewTextBoxColumn.HeaderText = "JobNo"
+        Me.JobNoDataGridViewTextBoxColumn.Name = "JobNoDataGridViewTextBoxColumn"
+        Me.JobNoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.JobNoDataGridViewTextBoxColumn.Width = 74
+        '
+        'RoutingStepDataGridViewTextBoxColumn
+        '
+        Me.RoutingStepDataGridViewTextBoxColumn.DataPropertyName = "RoutingStep"
+        Me.RoutingStepDataGridViewTextBoxColumn.HeaderText = "RoutingStep"
+        Me.RoutingStepDataGridViewTextBoxColumn.Name = "RoutingStepDataGridViewTextBoxColumn"
+        Me.RoutingStepDataGridViewTextBoxColumn.ReadOnly = True
+        Me.RoutingStepDataGridViewTextBoxColumn.Width = 111
+        '
+        'EmployeeDataGridViewTextBoxColumn
+        '
+        Me.EmployeeDataGridViewTextBoxColumn.DataPropertyName = "Employee"
+        Me.EmployeeDataGridViewTextBoxColumn.HeaderText = "Employee"
+        Me.EmployeeDataGridViewTextBoxColumn.Name = "EmployeeDataGridViewTextBoxColumn"
+        Me.EmployeeDataGridViewTextBoxColumn.ReadOnly = True
+        Me.EmployeeDataGridViewTextBoxColumn.Width = 95
+        '
+        'HoursDataGridViewTextBoxColumn
+        '
+        Me.HoursDataGridViewTextBoxColumn.DataPropertyName = "Hours"
+        Me.HoursDataGridViewTextBoxColumn.HeaderText = "Hours"
+        Me.HoursDataGridViewTextBoxColumn.Name = "HoursDataGridViewTextBoxColumn"
+        Me.HoursDataGridViewTextBoxColumn.ReadOnly = True
+        Me.HoursDataGridViewTextBoxColumn.Width = 71
+        '
+        'SetupDataGridViewCheckBoxColumn
+        '
+        Me.SetupDataGridViewCheckBoxColumn.DataPropertyName = "Setup"
+        Me.SetupDataGridViewCheckBoxColumn.HeaderText = "Setup"
+        Me.SetupDataGridViewCheckBoxColumn.Name = "SetupDataGridViewCheckBoxColumn"
+        Me.SetupDataGridViewCheckBoxColumn.ReadOnly = True
+        Me.SetupDataGridViewCheckBoxColumn.Width = 51
+        '
+        'ProdDateDataGridViewTextBoxColumn
+        '
+        Me.ProdDateDataGridViewTextBoxColumn.DataPropertyName = "ProdDate"
+        Me.ProdDateDataGridViewTextBoxColumn.HeaderText = "ProdDate"
+        Me.ProdDateDataGridViewTextBoxColumn.Name = "ProdDateDataGridViewTextBoxColumn"
+        Me.ProdDateDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProdDateDataGridViewTextBoxColumn.Width = 93
+        '
+        'EntDate
+        '
+        Me.EntDate.DataPropertyName = "EntDate"
+        Me.EntDate.HeaderText = "EntDate"
+        Me.EntDate.Name = "EntDate"
+        Me.EntDate.ReadOnly = True
+        Me.EntDate.Width = 84
+        '
+        'Notes
+        '
+        Me.Notes.DataPropertyName = "Notes"
+        Me.Notes.HeaderText = "Notes"
+        Me.Notes.Name = "Notes"
+        Me.Notes.ReadOnly = True
+        Me.Notes.Width = 70
+        '
+        'ProductionReportingBindingSource
+        '
+        Me.ProductionReportingBindingSource.DataMember = "ProductionReporting"
+        Me.ProductionReportingBindingSource.DataSource = Me.SHOPDBDataSetProdReport
+        '
+        'SHOPDBDataSetProdReport
+        '
+        Me.SHOPDBDataSetProdReport.DataSetName = "SHOPDBDataSetProdReport"
+        Me.SHOPDBDataSetProdReport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label11
         '
@@ -433,108 +536,31 @@ Partial Class ProductionReporting
         Me.ToolStripButton3.Size = New System.Drawing.Size(76, 24)
         Me.ToolStripButton3.Text = "Edit Entry"
         '
-        'ProductionReportingBindingSource
-        '
-        Me.ProductionReportingBindingSource.DataMember = "ProductionReporting"
-        Me.ProductionReportingBindingSource.DataSource = Me.SHOPDBDataSetProdReport
-        '
-        'SHOPDBDataSetProdReport
-        '
-        Me.SHOPDBDataSetProdReport.DataSetName = "SHOPDBDataSetProdReport"
-        Me.SHOPDBDataSetProdReport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'ProductionReportingTableAdapter
         '
         Me.ProductionReportingTableAdapter.ClearBeforeFill = True
         '
-        'IdDataGridViewTextBoxColumn
+        'ButtonUpdate
         '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "Id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "Id"
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdDataGridViewTextBoxColumn.Visible = False
-        Me.IdDataGridViewTextBoxColumn.Width = 25
+        Me.ButtonUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonUpdate.Location = New System.Drawing.Point(360, 349)
+        Me.ButtonUpdate.Name = "ButtonUpdate"
+        Me.ButtonUpdate.Size = New System.Drawing.Size(103, 45)
+        Me.ButtonUpdate.TabIndex = 24
+        Me.ButtonUpdate.Text = "UPDATE"
+        Me.ButtonUpdate.UseVisualStyleBackColor = True
+        Me.ButtonUpdate.Visible = False
         '
-        'QtyDataGridViewTextBoxColumn
+        'ButtonCancel
         '
-        Me.QtyDataGridViewTextBoxColumn.DataPropertyName = "Qty"
-        Me.QtyDataGridViewTextBoxColumn.HeaderText = "Qty"
-        Me.QtyDataGridViewTextBoxColumn.Name = "QtyDataGridViewTextBoxColumn"
-        Me.QtyDataGridViewTextBoxColumn.ReadOnly = True
-        Me.QtyDataGridViewTextBoxColumn.Width = 55
-        '
-        'PartNoDataGridViewTextBoxColumn
-        '
-        Me.PartNoDataGridViewTextBoxColumn.DataPropertyName = "PartNo"
-        Me.PartNoDataGridViewTextBoxColumn.HeaderText = "PartNo"
-        Me.PartNoDataGridViewTextBoxColumn.Name = "PartNoDataGridViewTextBoxColumn"
-        Me.PartNoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PartNoDataGridViewTextBoxColumn.Width = 77
-        '
-        'JobNoDataGridViewTextBoxColumn
-        '
-        Me.JobNoDataGridViewTextBoxColumn.DataPropertyName = "JobNo"
-        Me.JobNoDataGridViewTextBoxColumn.HeaderText = "JobNo"
-        Me.JobNoDataGridViewTextBoxColumn.Name = "JobNoDataGridViewTextBoxColumn"
-        Me.JobNoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.JobNoDataGridViewTextBoxColumn.Width = 74
-        '
-        'RoutingStepDataGridViewTextBoxColumn
-        '
-        Me.RoutingStepDataGridViewTextBoxColumn.DataPropertyName = "RoutingStep"
-        Me.RoutingStepDataGridViewTextBoxColumn.HeaderText = "RoutingStep"
-        Me.RoutingStepDataGridViewTextBoxColumn.Name = "RoutingStepDataGridViewTextBoxColumn"
-        Me.RoutingStepDataGridViewTextBoxColumn.ReadOnly = True
-        Me.RoutingStepDataGridViewTextBoxColumn.Width = 111
-        '
-        'EmployeeDataGridViewTextBoxColumn
-        '
-        Me.EmployeeDataGridViewTextBoxColumn.DataPropertyName = "Employee"
-        Me.EmployeeDataGridViewTextBoxColumn.HeaderText = "Employee"
-        Me.EmployeeDataGridViewTextBoxColumn.Name = "EmployeeDataGridViewTextBoxColumn"
-        Me.EmployeeDataGridViewTextBoxColumn.ReadOnly = True
-        Me.EmployeeDataGridViewTextBoxColumn.Width = 95
-        '
-        'HoursDataGridViewTextBoxColumn
-        '
-        Me.HoursDataGridViewTextBoxColumn.DataPropertyName = "Hours"
-        Me.HoursDataGridViewTextBoxColumn.HeaderText = "Hours"
-        Me.HoursDataGridViewTextBoxColumn.Name = "HoursDataGridViewTextBoxColumn"
-        Me.HoursDataGridViewTextBoxColumn.ReadOnly = True
-        Me.HoursDataGridViewTextBoxColumn.Width = 71
-        '
-        'SetupDataGridViewCheckBoxColumn
-        '
-        Me.SetupDataGridViewCheckBoxColumn.DataPropertyName = "Setup"
-        Me.SetupDataGridViewCheckBoxColumn.HeaderText = "Setup"
-        Me.SetupDataGridViewCheckBoxColumn.Name = "SetupDataGridViewCheckBoxColumn"
-        Me.SetupDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.SetupDataGridViewCheckBoxColumn.Width = 51
-        '
-        'ProdDateDataGridViewTextBoxColumn
-        '
-        Me.ProdDateDataGridViewTextBoxColumn.DataPropertyName = "ProdDate"
-        Me.ProdDateDataGridViewTextBoxColumn.HeaderText = "ProdDate"
-        Me.ProdDateDataGridViewTextBoxColumn.Name = "ProdDateDataGridViewTextBoxColumn"
-        Me.ProdDateDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProdDateDataGridViewTextBoxColumn.Width = 93
-        '
-        'EntDate
-        '
-        Me.EntDate.DataPropertyName = "EntDate"
-        Me.EntDate.HeaderText = "EntDate"
-        Me.EntDate.Name = "EntDate"
-        Me.EntDate.ReadOnly = True
-        Me.EntDate.Width = 84
-        '
-        'Notes
-        '
-        Me.Notes.DataPropertyName = "Notes"
-        Me.Notes.HeaderText = "Notes"
-        Me.Notes.Name = "Notes"
-        Me.Notes.ReadOnly = True
-        Me.Notes.Width = 70
+        Me.ButtonCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonCancel.Location = New System.Drawing.Point(469, 349)
+        Me.ButtonCancel.Name = "ButtonCancel"
+        Me.ButtonCancel.Size = New System.Drawing.Size(103, 45)
+        Me.ButtonCancel.TabIndex = 25
+        Me.ButtonCancel.Text = "CANCEL"
+        Me.ButtonCancel.UseVisualStyleBackColor = True
+        Me.ButtonCancel.Visible = False
         '
         'ProductionReporting
         '
@@ -553,10 +579,10 @@ Partial Class ProductionReporting
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
         CType(Me.ProductionReportingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SHOPDBDataSetProdReport, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -609,4 +635,6 @@ Partial Class ProductionReporting
     Friend WithEvents ProdDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents EntDate As DataGridViewTextBoxColumn
     Friend WithEvents Notes As DataGridViewTextBoxColumn
+    Friend WithEvents ButtonUpdate As Button
+    Friend WithEvents ButtonCancel As Button
 End Class
