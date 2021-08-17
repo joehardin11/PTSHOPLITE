@@ -40,6 +40,8 @@ Partial Class ProductionReporting
         Me.Notes = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProductionReportingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SHOPDBDataSetProdReport = New PTSHOPLITE.SHOPDBDataSetProdReport()
+        Me.ButtonCancel = New System.Windows.Forms.Button()
+        Me.ButtonUpdate = New System.Windows.Forms.Button()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TextBoxNotes = New System.Windows.Forms.TextBox()
         Me.Label_InvalidPart = New System.Windows.Forms.Label()
@@ -71,8 +73,6 @@ Partial Class ProductionReporting
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.ProductionReportingTableAdapter = New PTSHOPLITE.SHOPDBDataSetProdReportTableAdapters.ProductionReportingTableAdapter()
-        Me.ButtonUpdate = New System.Windows.Forms.Button()
-        Me.ButtonCancel = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -256,6 +256,28 @@ Partial Class ProductionReporting
         '
         Me.SHOPDBDataSetProdReport.DataSetName = "SHOPDBDataSetProdReport"
         Me.SHOPDBDataSetProdReport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ButtonCancel
+        '
+        Me.ButtonCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonCancel.Location = New System.Drawing.Point(469, 349)
+        Me.ButtonCancel.Name = "ButtonCancel"
+        Me.ButtonCancel.Size = New System.Drawing.Size(103, 45)
+        Me.ButtonCancel.TabIndex = 25
+        Me.ButtonCancel.Text = "CANCEL"
+        Me.ButtonCancel.UseVisualStyleBackColor = True
+        Me.ButtonCancel.Visible = False
+        '
+        'ButtonUpdate
+        '
+        Me.ButtonUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonUpdate.Location = New System.Drawing.Point(360, 349)
+        Me.ButtonUpdate.Name = "ButtonUpdate"
+        Me.ButtonUpdate.Size = New System.Drawing.Size(103, 45)
+        Me.ButtonUpdate.TabIndex = 24
+        Me.ButtonUpdate.Text = "UPDATE"
+        Me.ButtonUpdate.UseVisualStyleBackColor = True
+        Me.ButtonUpdate.Visible = False
         '
         'Label11
         '
@@ -539,28 +561,6 @@ Partial Class ProductionReporting
         'ProductionReportingTableAdapter
         '
         Me.ProductionReportingTableAdapter.ClearBeforeFill = True
-        '
-        'ButtonUpdate
-        '
-        Me.ButtonUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonUpdate.Location = New System.Drawing.Point(360, 349)
-        Me.ButtonUpdate.Name = "ButtonUpdate"
-        Me.ButtonUpdate.Size = New System.Drawing.Size(103, 45)
-        Me.ButtonUpdate.TabIndex = 24
-        Me.ButtonUpdate.Text = "UPDATE"
-        Me.ButtonUpdate.UseVisualStyleBackColor = True
-        Me.ButtonUpdate.Visible = False
-        '
-        'ButtonCancel
-        '
-        Me.ButtonCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonCancel.Location = New System.Drawing.Point(469, 349)
-        Me.ButtonCancel.Name = "ButtonCancel"
-        Me.ButtonCancel.Size = New System.Drawing.Size(103, 45)
-        Me.ButtonCancel.TabIndex = 25
-        Me.ButtonCancel.Text = "CANCEL"
-        Me.ButtonCancel.UseVisualStyleBackColor = True
-        Me.ButtonCancel.Visible = False
         '
         'ProductionReporting
         '

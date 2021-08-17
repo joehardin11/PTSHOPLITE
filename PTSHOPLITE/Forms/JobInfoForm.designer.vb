@@ -398,7 +398,7 @@ Partial Class JobInfoForm
         Me.ReleasesPage.Margin = New System.Windows.Forms.Padding(4)
         Me.ReleasesPage.Name = "ReleasesPage"
         Me.ReleasesPage.Padding = New System.Windows.Forms.Padding(4)
-        Me.ReleasesPage.Size = New System.Drawing.Size(802, 398)
+        Me.ReleasesPage.Size = New System.Drawing.Size(802, 399)
         Me.ReleasesPage.TabIndex = 1
         Me.ReleasesPage.Text = "Releases"
         Me.ReleasesPage.UseVisualStyleBackColor = True
@@ -410,7 +410,7 @@ Partial Class JobInfoForm
         Me.Release_treeview.Location = New System.Drawing.Point(4, 4)
         Me.Release_treeview.Margin = New System.Windows.Forms.Padding(4)
         Me.Release_treeview.Name = "Release_treeview"
-        Me.Release_treeview.Size = New System.Drawing.Size(794, 390)
+        Me.Release_treeview.Size = New System.Drawing.Size(794, 391)
         Me.Release_treeview.TabIndex = 0
         '
         'OrderDocTab
@@ -420,7 +420,7 @@ Partial Class JobInfoForm
         Me.OrderDocTab.Location = New System.Drawing.Point(4, 30)
         Me.OrderDocTab.Margin = New System.Windows.Forms.Padding(4)
         Me.OrderDocTab.Name = "OrderDocTab"
-        Me.OrderDocTab.Size = New System.Drawing.Size(802, 398)
+        Me.OrderDocTab.Size = New System.Drawing.Size(802, 399)
         Me.OrderDocTab.TabIndex = 2
         Me.OrderDocTab.Text = "Order Documents"
         Me.OrderDocTab.UseVisualStyleBackColor = True
@@ -468,7 +468,7 @@ Partial Class JobInfoForm
         Me.OrderDocs.Location = New System.Drawing.Point(4, 34)
         Me.OrderDocs.Margin = New System.Windows.Forms.Padding(4)
         Me.OrderDocs.Name = "OrderDocs"
-        Me.OrderDocs.Size = New System.Drawing.Size(791, 288)
+        Me.OrderDocs.Size = New System.Drawing.Size(791, 289)
         Me.OrderDocs.TabIndex = 0
         '
         'SplitContainer1

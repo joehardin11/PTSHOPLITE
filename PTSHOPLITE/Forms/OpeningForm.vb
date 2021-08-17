@@ -6,7 +6,7 @@
     Private Sub GoButton_Click(sender As Object, e As EventArgs) Handles GoButton.Click
 
         'Dim InputType = ParseInput(TextBox1.Text)
-        'JobInfoForm.Show()
+        JobInfoForm.Show()
 
     End Sub
 
@@ -25,6 +25,8 @@
         Integer.TryParse(Input, InputInt)
 
         If InputInt = 0 Then Return Nothing
+
+        Return InputInt
 
     End Function
 

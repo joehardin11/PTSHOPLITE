@@ -100,7 +100,7 @@ Line1:
         Dim BarCodeInput = TextBoxBarcode.Text
         Dim BarCodeJobNo As String
         Dim BarCodeRoutStep As String
-        Dim BarCodeInfo3 As String
+        'Dim BarCodeInfo3 As String
         'Dim BarCodeInfo4 = BarCodeInput
 
         'if enter is pressed then continue
@@ -271,8 +271,12 @@ Line1:
 
         'parse job number and retreve part number
         Dim JobNoInput = TextBoxJobNo.Text
-        If CheckJobNumberFormat(JobNoInput) = True Then CurrentPartNo = GetPartNumberFromJobNo(JobNoInput)
-        TextBoxPartNo.Text = CurrentPartNo
+        If CheckJobNumberFormat(JobNoInput) = True Then
+            CurrentPartNo = GetPartNumberFromJobNo(JobNoInput)
+            TextBoxPartNo.Text = CurrentPartNo
+        Else
+            Exit Sub
+        End If
         TextBoxPartNo_Leave(sender, e)
 
         'take part number and fill the routing combobox
@@ -348,6 +352,8 @@ Line1:
 
     Private Sub ClearForm() Handles ToolStripButton2.Click
 
+        If ButtonUpdate.Visible = True Then ButtonCancel_Click()
+
         TextBoxQty.Clear()
         TextBoxHours.Clear()
         TextBoxEmployeeNo.Clear()
@@ -363,8 +369,6 @@ Line1:
         TextBoxNotes.Clear()
 
     End Sub
-
-
 
     Private Sub ProductionReporting_Load() Handles MyBase.Load
         'TODO: This line of code loads data into the 'SHOPDBDataSetProdReport.ProductionReporting' table. You can move, or remove it, as needed.
@@ -403,7 +407,7 @@ Line1:
 
     End Sub
 
-    Private Sub ButtonCancel_Click(sender As Object, e As EventArgs) Handles ButtonCancel.Click
+    Private Sub ButtonCancel_Click() Handles ButtonCancel.Click
         TextBoxQty.Clear()
         TextBoxHours.Clear()
         TextBoxJobNo.Clear()
@@ -419,6 +423,5 @@ Line1:
         ButtonUpdate.Visible = False
 
     End Sub
-
 
 End Class
