@@ -20,7 +20,7 @@ Public Class ProductionReporting
         Dim EmployeeInput = TextBoxEmployeeNo.Text
         Dim EmployeeInputAsInt = 0
         Dim HoursInput = TextBoxHours.Text
-        Dim HoursInputAsInt = 0
+        Dim HoursInputAsDecimal As Decimal = 0
         Dim SetupInput = CheckBox1.Checked
         Dim DateProducedInput = DateTimePicker1.Value.ToShortDateString
         Dim NotesInput = TextBoxNotes.Text
@@ -40,10 +40,16 @@ Public Class ProductionReporting
             GoTo Line1
         End If
 
-        If Integer.TryParse(HoursInput, HoursInputAsInt) Then
-            HoursInputAsInt = HoursInput
+        If Decimal.TryParse(HoursInput, HoursInputAsDecimal) Then
+            HoursInputAsDecimal = HoursInput
+            HoursInputAsDecimal = Decimal.Round(HoursInputAsDecimal, 2)
+            If HoursInputAsDecimal > 99.99 Then
+                MsgBox("HOURS Exceed Maximum Allowable Input (Max = 99.99)", vbOKOnly)
+                TextBoxQty.Select()
+                GoTo Line1
+            End If
         Else
-            MsgBox("HOURS Must be a Number", vbOKOnly)
+            MsgBox("HOURS Must be a Number, up to Two Decimals (ex: 1.25)", vbOKOnly)
             TextBoxQty.Select()
             GoTo Line1
         End If
@@ -78,11 +84,11 @@ Public Class ProductionReporting
 
         'sql write statement
         If Button1.Visible = True Then
-            AddProductionToSql(QtyInputAsInt, PartNoInputAsInt, JobNoInput, RoutingStepInput, EmployeeInputAsInt, HoursInputAsInt, SetupInput, DateProducedInput, NotesInput)
+            AddProductionToSql(QtyInputAsInt, PartNoInputAsInt, JobNoInput, RoutingStepInput, EmployeeInputAsInt, HoursInputAsDecimal, SetupInput, DateProducedInput, NotesInput)
         End If
 
         If ButtonUpdate.Visible = True Then
-            UpdateProductionToSql(QtyInputAsInt, PartNoInputAsInt, JobNoInput, RoutingStepInput, EmployeeInputAsInt, HoursInputAsInt, SetupInput, DateProducedInput, NotesInput, IDIndex)
+            UpdateProductionToSql(QtyInputAsInt, PartNoInputAsInt, JobNoInput, RoutingStepInput, EmployeeInputAsInt, HoursInputAsDecimal, SetupInput, DateProducedInput, NotesInput, IDIndex)
         End If
 
         'clear boxes

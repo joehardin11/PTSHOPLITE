@@ -12,6 +12,7 @@
 
     Private Sub OpeningForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Me.WindowState = FormWindowState.Maximized
+        Me.Text = "PT SHOP Lite v" & Application.ProductVersion
     End Sub
 
     Private Sub TextBox1_KeyUp(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyUp
