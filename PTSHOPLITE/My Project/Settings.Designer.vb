@@ -15,7 +15,7 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -53,26 +53,12 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(),
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=PTI-SRV\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=True;Co" &
-            "nnect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=Rea" &
-            "dWrite;MultiSubnetFailover=False")>
-        Public Property PartDatabaseString() As String
-            Get
-                Return CType(Me("PartDatabaseString"), String)
-            End Get
-            Set
-                Me("PartDatabaseString") = Value
-            End Set
-        End Property
-
+        
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\\pti-srv\e2app\Blswin32\Dat\POLYTEC"& _ 
-            "H\BLSDATA.MDB")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\\pti-clt-app01\e2app\Blswin32\Dat\P"& _ 
+            "OLYTECH\BLSDATA.MDB")>  _
         Public ReadOnly Property E2Database() As String
             Get
                 Return CType(Me("E2Database"),String)
@@ -82,7 +68,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=PTI-SRV\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=True")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=PTI-clt-app01\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=T"& _ 
+            "rue")>  _
         Public ReadOnly Property SHOPDB() As String
             Get
                 Return CType(Me("SHOPDB"),String)
@@ -136,6 +123,20 @@ Namespace My
             End Get
             Set
                 Me("DCFolder") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=PTI-clt-app01\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=T"& _ 
+            "rue;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationInte"& _ 
+            "nt=ReadWrite;MultiSubnetFailover=False")>  _
+        Public Property PartDatabaseString() As String
+            Get
+                Return CType(Me("PartDatabaseString"),String)
+            End Get
+            Set
+                Me("PartDatabaseString") = value
             End Set
         End Property
     End Class

@@ -5,18 +5,18 @@
     <Setting Name="E2Database" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\\pti-srv\e2app\Blswin32\Dat\POLYTECH\BLSDATA.MDB&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\\pti-clt-app01\e2app\Blswin32\Dat\POLYTECH\BLSDATA.MDB&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.OleDb&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\\pti-srv\e2app\Blswin32\Dat\POLYTECH\BLSDATA.MDB</Value>
+      <Value Profile="(Default)">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\\pti-clt-app01\e2app\Blswin32\Dat\POLYTECH\BLSDATA.MDB</Value>
     </Setting>
     <Setting Name="SHOPDB" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=PTI-SRV\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=PTI-clt-app01\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=True&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=PTI-SRV\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=True</Value>
+      <Value Profile="(Default)">Data Source=PTI-clt-app01\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=True</Value>
     </Setting>
     <Setting Name="SQLPT" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -29,6 +29,9 @@
     </Setting>
     <Setting Name="DCFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)">V:\Engineering\FINAL PRINTS</Value>
+    </Setting>
+    <Setting Name="PartDatabaseString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=PTI-clt-app01\SQLEXPRESS;Initial Catalog=SHOPDB;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

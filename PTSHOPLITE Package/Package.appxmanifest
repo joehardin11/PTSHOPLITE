@@ -9,7 +9,7 @@
   <Identity
     Name="4a2e095c-feb1-42d3-b429-c764243ef4a7"
     Publisher="CN=Poly-Tech Industrial"
-    Version="1.0.3.0" />
+    Version="1.0.5.0" />
 
   <Properties>
     <DisplayName>PTSHOPLITE Package</DisplayName>

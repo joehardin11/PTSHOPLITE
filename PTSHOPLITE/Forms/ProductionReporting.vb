@@ -379,6 +379,7 @@ Line1:
     Private Sub ProductionReporting_Load() Handles MyBase.Load
         'TODO: This line of code loads data into the 'SHOPDBDataSetProdReport.ProductionReporting' table. You can move, or remove it, as needed.
         Me.ProductionReportingTableAdapter.Fill(Me.SHOPDBDataSetProdReport.ProductionReporting)
+        Me.Text = "Production Reporting v" & Application.ProductVersion
     End Sub
 
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
